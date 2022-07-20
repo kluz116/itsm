@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.module.category" id="module_itsm">
+        <field name="name">ITSM</field>
+        <field name="description">IT Service Managment</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="change_agents" model="res.groups">
+        <field name="name">Change Agents</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="module_itsm"/>
+    </record>
+
+    <record id="change_supervisor" model="res.groups">
+        <field name="name">Change Supervisor</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="module_itsm"/>
+       <!--- <field name="implied_ids" eval="[(4, ref('change_agents'))]"/>-->
+       
+    </record>
+    <record id="change_approver" model="res.groups">
+        <field name="name">Change Approver</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="module_itsm"/>
+    </record>
+
+
+    <record id="support_agents" model="res.groups">
+        <field name="name">Support Agents</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="module_itsm"/>
+    </record>
+     <record id="portal_users" model="res.groups">
+        <field name="name">Portal User</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="module_itsm"/>
+    </record>
+    <record id="service_manager" model="res.groups">
+        <field name="name">Service Manager</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="module_itsm"/>
+    </record>
+
+
+</odoo>

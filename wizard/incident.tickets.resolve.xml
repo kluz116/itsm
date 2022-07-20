@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="resolve_ticket_view_form_wizard" model="ir.ui.view">
+            <field name="name">itsm.tickets_incidents_resolve.form</field>
+            <field name="model">itsm.tickets_incidents_resolve_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Resolve Ticket">
+                    <sheet>
+                        <group>
+                         <field name="state" readonly="1" />
+                            <field name="resolution_comment"/>
+                        </group>
+                        <group>
+                            <field name="resolution_date"  invisible="1"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_resolve_agent" string="Resolve" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="wizard_resolve_form_view" model="ir.actions.act_window">
+            <field name="name">Resolve Ticket</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">itsm.tickets_incidents_resolve_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="resolve_ticket_view_form_wizard"/>
+            <field name="target">new</field>
+        </record>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="close_ticket_view_form_wizard" model="ir.ui.view">
+            <field name="name">itsm.tickets_incidents_close.form</field>
+            <field name="model">itsm.tickets_incidents_close_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Close Ticket">
+                    <sheet>
+                        <group>
+                            <field name="state" readonly="1" />
+                            <field name="rating"/>
+                        </group>
+                        <group>
+                            <field name="closing_date"  invisible="1"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_close_agent" string="Close" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="wizard_close_form_view" model="ir.actions.act_window">
+            <field name="name">Closet</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">itsm.tickets_incidents_close_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="close_ticket_view_form_wizard"/>
+            <field name="target">new</field>
+        </record>
+</odoo>

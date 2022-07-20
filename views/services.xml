@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <record id="view_services_tree" model="ir.ui.view">
+            <field name="name">services.services.tree</field>
+            <field name="model">services.services</field>
+             <field name="arch" type="xml">
+                <tree string="All Services">
+                    <field name="servicename" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="service_form_view">
+            <field name="name">services.form</field>
+            <field name="model">services.services</field>
+            <field name="arch" type="xml">
+                <form string="Add Service" create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <field name="servicename"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="subcategory_form_view">
+            <field name="name">services.subcategory.form</field>
+            <field name="model">services.subcategory</field>
+            <field name="arch" type="xml">
+                <form string="Add Service sub Category" create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <field name="service_subcategory_name"/>
+                        </group>
+                        <group>
+                            <field name="request_type"/>
+                        </group>
+                        <group>
+                            <field name="service_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_services_subcategory_tree" model="ir.ui.view">
+            <field name="name">services.subcategory.tree</field>
+            <field name="model">services.subcategory</field>
+             <field name="arch" type="xml">
+                <tree string="All Services Sub-categories">
+                    <field name="service_subcategory_name" />
+                     <field name="request_type"/>
+                     <field name="service_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="services_search_view">
+            <field name="name">services.search</field>
+            <field name="model">services.services</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="servicename"/>
+                </search>
+            </field>
+        </record>
+
+       <record id="view_services_subcategory_search" model="ir.ui.view">
+            <field name="name">services.subcategory.tree</field>
+            <field name="model">services.subcategory</field>
+             <field name="arch" type="xml">
+                <search>
+                    <field name="service_subcategory_name" />
+                     <field name="service_id"/>
+                
+                </search>
+            </field>
+        </record>
+
+  
+        <record model="ir.actions.act_window" id="service_list_action">
+            <field name="name">Services</field>
+            <field name="res_model">services.services</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create service</p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="service_subcategory_list_action">
+            <field name="name">Services Sub-category</field>
+            <field name="res_model">services.subcategory</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create Service Sub-Category</p>
+            </field>
+        </record>
+
+        <menuitem id="main_service_menu" name="ITSM"/>
+        <menuitem id="service_menu" name="Service Managment" parent="main_service_menu" groups="itsm.service_manager"/>
+        <menuitem id="Services" name="Services" parent="service_menu" action="service_list_action"/>
+        <menuitem id="Sub_Services" name="Service Subcategories" parent="service_menu" action="service_subcategory_list_action"/>
+        
+     
+
+</odoo>

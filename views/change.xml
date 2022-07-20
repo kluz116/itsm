@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_change_tree" model="ir.ui.view">
+            <field name="name">change.tree</field>
+            <field name="model">itsm.change</field>
+             <field name="arch" type="xml">
+                <tree string="Change">
+                    <field name="title" />
+                    <field name="description" />
+                    <field name="state" />
+                    <field name="start_date" />
+                 
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="change_form_view">
+            <field name="name">change.form</field>
+            <field name="model">itsm.change</field>
+            <field name="arch" type="xml">
+                <form string="Create Change" create="false" edit="false">
+                    <header>
+                    <button name="%(wizard_validate_form_view)d"  states='new' string="Validate Change" class="btn btn-primary" type="action" groups="itsm.change_supervisor"/>
+                    <button name="%(wizard_change_assign_form_view)d" states='validate' string="Assign" class="btn btn-primary" type="action" groups="itsm.change_supervisor"/>
+                    <button name="%(wizard_plan_form_view)d" states='assign' string="Plan" class="btn btn-primary" type="action" groups="itsm.change_agents"/>
+                    <button name="%(wizard_change_approve_form_view)d" states='plan' string="Approve" class="oe_highlight" type="action" groups="itsm.change_approver"/>
+                    <button name="%(wizard_change_reject_form_view)d" states='plan' string="Reject" class="oe_highlight" type="action" groups="itsm.change_approver"/>
+                    <button name="action_implement" states='approve' string="Implement" class="oe_highlight" type="object" groups="itsm.change_agents"/>
+                    <button name="%(wizard_close_form_view)d" states='implement' string="Close" class="oe_highlight" type="action" groups="itsm.change_aggents"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,validate,plan,approve,reject,implement,close" invisible="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="title"/>
+                        </group>
+                         <group>
+                            <field name="state" readonly="1" />
+                        </group>
+                        <group>
+                            <field name="start_date"  invisible="1"/>
+                        </group>
+                        <group>
+                                <field name="description"/>
+                        </group>
+                           
+                    </sheet>
+                </form>
+            </field>
+        </record>   
+ 
+  
+
+        <record model="ir.ui.view" id="change_search_view">
+            <field name="name">change.search</field>
+            <field name="model">itsm.change</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="title" />
+                    <field name="description" />
+                    <field name="start_date" />
+                    <field name="state" />
+                     <separator/>
+                     <filter name="start_day" string="Today" domain="[('start_date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00'))]" />
+         
+                </search>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="change_list_action">
+            <field name="name">Change Requests</field>
+            <field name="res_model">itsm.change</field>
+            <field name="view_mode">tree,form</field>
+            <field name ="context">{"search_default_start_day":1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create new change requests</p>
+            </field>
+        </record>
+
+     
+        
+        <menuitem id="main_service_menu" name="ITSM"/>
+        <menuitem id="change_menu" name="Change Managment" parent="main_service_menu" groups="itsm.change_supervisor,itsm.change_agents"/>
+        <menuitem id="change_incidents" name="Change Requests" parent="change_menu" action="change_list_action" groups="itsm.change_supervisor,itsm.change_agents"/>
+        
+</odoo>

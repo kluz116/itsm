@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="assign_ticket_view_form_wizard" model="ir.ui.view">
+            <field name="name">itsm.tickets_incidents_assign.form</field>
+            <field name="model">itsm.tickets_incidents_assign_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Assign Ticket">
+                    <group class="oe_title">
+                         <field name="state" readonly="1" />
+                         <field name="team_id"/>
+                         <field name="agent_id"/>
+                    </group>
+                    <footer>
+                        <button name="action_assign_agent" string="Assign" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="wizard_assign_form_view" model="ir.actions.act_window">
+            <field name="name">Assign Ticket</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">itsm.tickets_incidents_assign_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="assign_ticket_view_form_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+       <!--    
+        <record id="wizard_assign_form_view" model="ir.actions.act_window">
+            <field name="name">Assign Incident</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">itsm.assign.incident.wizard</field>
+            <field name="src_model">itsm.incident</field>
+            <field name="view_mode">form</field>
+            <field name="view_type">form</field>
+           <field name="view_id" ref="wizard_form_view"/>
+           <field name="target">new</field>
+        </record>-->
+</odoo>

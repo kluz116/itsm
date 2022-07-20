@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_itsm_itsm1,itsm.itsm,model_itsm_change,change_supervisor,1,1,1,0
+access_itsm_itsm11,itsm.itsm,model_itsm_change,change_approver,1,1,0,0
+access_itsm_itsm2,itsm.itsm,model_itsm_change,change_agents,1,1,1,0
+access_itsm_itsm3,itsm.itsm,model_ticket_request,support_agents,1,1,1,0
+access_itsm_itsm4,itsm.itsm,model_services_services,support_agents,1,1,1,0
+access_itsm_itsm5,itsm.itsm,model_services_subcategory,support_agents,1,1,1,0
+access_itsm_itsm6,itsm.itsm,model_ticket_request,portal_users,1,1,1,0
+access_itsm_itsm7,itsm.itsm,model_itsm_incident,portal_users,1,1,1,0
+access_itsm_itsm8,itsm.itsm,model_itsm_incident,support_agents,1,1,1,0
+access_itsm_itsmx,itsm.itsm,model_services_services,portal_users,1,1,1,0
+access_itsm_itsmy,itsm.itsm,model_services_subcategory,portal_users,1,1,1,0

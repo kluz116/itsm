@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="reject_change_view_form_wizard" model="ir.ui.view">
+            <field name="name">itsm.reject_change_wizard.form</field>
+            <field name="model">itsm.reject_change_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Change Reject">
+                    <group class="oe_title">
+                            <field name="reject_comment"/>
+                            <field name="reject_date"/>
+                        
+                    </group>
+                    <footer>
+                        <button name="change_reject_agent" string="Reject" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="wizard_change_reject_form_view" model="ir.actions.act_window">
+            <field name="name">Assign Request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">itsm.reject_change_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="reject_change_view_form_wizard"/>
+            <field name="target">new</field>
+        </record>
+</odoo>
