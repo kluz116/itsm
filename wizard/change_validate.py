@@ -2,7 +2,7 @@ from odoo import api, fields, models
 from datetime import datetime
 
 class ValidateChange(models.TransientModel):
-    _name = "itsm.validate_change"
+    _name = "cclog.validate_change"
     _description = "Validate Change"
     _rec_name = 'validate_comment'
 
@@ -16,7 +16,7 @@ class ValidateChange(models.TransientModel):
     @api.multi
     def action_validate_change(self):
         self.write({'state': 'validate'})
-        changes = self.env['itsm.change'].browse(self._context.get('active_ids'))
+        changes = self.env['cclog.change'].browse(self._context.get('active_ids'))
         for change in changes:
             change.state = self.state
             change.validate_comment = self.validate_comment

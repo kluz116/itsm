@@ -2,7 +2,7 @@ from odoo import api, fields, models
 from datetime import datetime
 
 class IncidentCloseTicket(models.TransientModel):
-    _name = "itsm.tickets_incidents_close_wizard"
+    _name = "cclog.tickets_incidents_close_wizard"
     _description = "Close Incident"
     _rec_name = 'rating'
 
@@ -18,7 +18,7 @@ class IncidentCloseTicket(models.TransientModel):
     @api.multi
     def action_close_agent(self):
         self.write({'state': 'C'})
-        incidents = self.env['itsm.incident'].browse(self._context.get('active_ids'))
+        incidents = self.env['cclog.incident'].browse(self._context.get('active_ids'))
         for incident in incidents:
             incident.rating = self.rating
             incident.closing_date = self.closing_date

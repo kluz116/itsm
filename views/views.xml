@@ -2,9 +2,9 @@
   
     <!-- explicit list view definition -->
     <!--
-    <record model="ir.ui.view" id="itsm.list">
-      <field name="name">ITSM list</field>
-      <field name="model">itsm.itsm</field>
+    <record model="ir.ui.view" id="cclog.list">
+      <field name="name">cclog list</field>
+      <field name="model">cclog.cclog</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
@@ -17,18 +17,18 @@
 
     <!-- actions opening views on models -->
     <!--
-    <record model="ir.actions.act_window" id="itsm.action_window">
-      <field name="name">ITSM window</field>
-      <field name="res_model">itsm.itsm</field>
+    <record model="ir.actions.act_window" id="cclog.action_window">
+      <field name="name">cclog window</field>
+      <field name="res_model">cclog.cclog</field>
       <field name="view_mode">tree,form</field>
     </record>
     -->
 
     <!-- server action to the one above -->
     <!--
-    <record model="ir.actions.server" id="itsm.action_server">
-      <field name="name">ITSM server</field>
-      <field name="model_id" ref="model_itsm_itsm"/>
+    <record model="ir.actions.server" id="cclog.action_server">
+      <field name="name">cclog server</field>
+      <field name="model_id" ref="model_cclog_cclog"/>
       <field name="state">code</field>
       <field name="code">
         action = {
@@ -42,19 +42,19 @@
 
     <!-- Top menu item -->
     <!--
-    <menuitem name="ITSM" id="itsm.menu_root"/>
+    <menuitem name="cclog" id="cclog.menu_root"/>
     -->
     <!-- menu categories -->
     <!--
-    <menuitem name="Menu 1" id="itsm.menu_1" parent="itsm.menu_root"/>
-    <menuitem name="Menu 2" id="itsm.menu_2" parent="itsm.menu_root"/>
+    <menuitem name="Menu 1" id="cclog.menu_1" parent="cclog.menu_root"/>
+    <menuitem name="Menu 2" id="cclog.menu_2" parent="cclog.menu_root"/>
     -->
     <!-- actions -->
     <!--
-    <menuitem name="List" id="itsm.menu_1_list" parent="itsm.menu_1"
-              action="itsm.action_window"/>
-    <menuitem name="Server to list" id="itsm" parent="itsm.menu_2"
-              action="itsm.action_server"/>
+    <menuitem name="List" id="cclog.menu_1_list" parent="cclog.menu_1"
+              action="cclog.action_window"/>
+    <menuitem name="Server to list" id="cclog" parent="cclog.menu_2"
+              action="cclog.action_server"/>
     -->
   
 </odoo>

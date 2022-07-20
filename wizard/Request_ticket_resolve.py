@@ -2,7 +2,7 @@ from odoo import api, fields, models
 from datetime import datetime
 
 class RequestResolveTicket(models.TransientModel):
-    _name = "itsm.assign_resolve_tickets_wizard"
+    _name = "cclog.resolve_ticket"
     _description = "Resolve Requests"
     _rec_name = 'resolution_comment'
 

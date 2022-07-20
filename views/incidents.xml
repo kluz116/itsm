@@ -2,7 +2,7 @@
 <odoo>
         <record id="view_incident_tree" model="ir.ui.view">
             <field name="name">ticket.incident.tree</field>
-            <field name="model">itsm.incident</field>
+            <field name="model">cclog.incident</field>
              <field name="arch" type="xml">
                 <tree string="Incidents">
                     <field name="title" />
@@ -17,16 +17,16 @@
 
         <record model="ir.ui.view" id="incident_request_form_view">
             <field name="name">ticket.incident.form</field>
-            <field name="model">itsm.incident</field>
+            <field name="model">cclog.incident</field>
             <field name="arch" type="xml">
                 <form string="Create Incident" create="false" edit="false">
                     <header>
-                     <button name="%(itsm.wizard_assign_form_view)d"  states='N' string="Assign" class="btn btn-primary" type="action" groups ="itsm.portal_user,itsm.support_agents"/>
-                    <button name="action_reassign" states='A' string="Re-Assign" class="btn btn-primary" type="object" groups ="itsm.support_agents"/>
-                    <button name="%(itsm.wizard_pending_form_view)d" states='A' string="Pending" class="oe_highlight" type="action" groups ="itsm.support_agents"/>
-                    <button name="%(itsm.wizard_resolve_form_view)d" states='A,P,RA' string="Resolve" class="oe_highlight" type="action" groups ="itsm.support_agents"/>
-                    <button name="action_reopen" states='R' string="Re Open" class="oe_highlight" type="object" groups ="itsm.portal_user"/>
-                    <button name="%(itsm.wizard_close_form_view)d" states='R' string="Close" class="oe_highlight" type="action" groups ="itsm.portal_user"/>
+                     <button name="%(cclog.wizard_assign_form_view)d"  states='N' string="Assign" class="btn btn-primary" type="action" groups ="cclog.portal_user,cclog.support_agents"/>
+                    <button name="action_reassign" states='A' string="Re-Assign" class="btn btn-primary" type="object" groups ="cclog.support_agents"/>
+                    <button name="%(cclog.wizard_pending_form_view)d" states='A' string="Pending" class="oe_highlight" type="action" groups ="cclog.support_agents"/>
+                    <button name="%(cclog.wizard_resolve_form_view)d" states='A,P,RA' string="Resolve" class="oe_highlight" type="action" groups ="cclog.support_agents"/>
+                    <button name="action_reopen" states='R' string="Re Open" class="oe_highlight" type="object" groups ="cclog.portal_user"/>
+                    <button name="%(cclog.wizard_close_form_view)d" states='R' string="Close" class="oe_highlight" type="action" groups ="cclog.portal_user"/>
                     <!--<field name="state" widget="statusbar" statusbar_visible="N,A,RA,P,R,RO,C" />-->
                     </header>
                     <sheet>
@@ -55,7 +55,7 @@
         </record>        
         <record model="ir.ui.view" id="ticket_incident_search_view">
             <field name="name">ticket.incident.search</field>
-            <field name="model">itsm.incident</field>
+            <field name="model">cclog.incident</field>
             <field name="arch" type="xml">
                 <search>
                     <field name="title" />
@@ -78,7 +78,7 @@
 
         <record model="ir.actions.act_window" id="incident_list_action">
             <field name="name">Incident Ticket</field>
-            <field name="res_model">itsm.incident</field>
+            <field name="res_model">cclog.incident</field>
             <field name="view_mode">tree,form</field>
              <field name ="context">{"search_default_start_date":1}</field>
             <field name="help" type="html">
@@ -86,7 +86,7 @@
             </field>
         </record>
         
-        <menuitem id="main_service_menu" name="ITSM"/>
+        <menuitem id="main_service_menu" name="cclog"/>
         <menuitem id="incident_menu" name="Incident Managment" parent="main_service_menu"/>
         <menuitem id="ticket_incidents" name="Incident Requests" parent="incident_menu" action="incident_list_action"/>
         

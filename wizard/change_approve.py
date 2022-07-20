@@ -2,7 +2,7 @@ from odoo import api, fields, models
 from datetime import datetime
 
 class ChangeApprove(models.TransientModel):
-    _name = "itsm.approve_change_wizard"
+    _name = "cclog.approve_change_wizard"
     _description = "Approve Change"
     _rec_name = 'approval_comment'
 
@@ -14,7 +14,7 @@ class ChangeApprove(models.TransientModel):
     @api.multi
     def change_approve_agent(self):
         self.write({'state': 'approve'})
-        changes = self.env['itsm.change'].browse(self._context.get('active_ids'))
+        changes = self.env['cclog.change'].browse(self._context.get('active_ids'))
         for change in changes:
             change.state = self.state
             change.approval_comment = self.approval_comment

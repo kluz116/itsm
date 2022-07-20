@@ -2,7 +2,7 @@ from odoo import api, fields, models
 from datetime import datetime
 
 class RequestsPendingTicket(models.TransientModel):
-    _name = "itsm.pending_tickets_wizard"
+    _name = "cclog.pending_tickets_wizard"
     _description = "Pending Requests"
     _rec_name = 'pending_comment'
 

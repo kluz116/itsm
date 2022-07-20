@@ -2,7 +2,7 @@ from odoo import api, fields, models
 from datetime import datetime
 
 class ChangeReject(models.TransientModel):
-    _name = "itsm.reject_change_wizard"
+    _name = "cclog.reject_change_wizard"
     _description = "Approve Change"
     _rec_name = 'reject_comment'
 
@@ -14,7 +14,7 @@ class ChangeReject(models.TransientModel):
     @api.multi
     def change_reject_agent(self):
         self.write({'state': 'reject'})
-        changes = self.env['itsm.change'].browse(self._context.get('active_ids'))
+        changes = self.env['cclog.change'].browse(self._context.get('active_ids'))
         for change in changes:
             change.state = self.state
             change.reject_comment = self.reject_comment

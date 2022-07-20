@@ -2,7 +2,7 @@ from odoo import api, fields, models
 from datetime import datetime
 
 class RequestCloseTicket(models.TransientModel):
-    _name = "itsm.close_tickets_wizard"
+    _name = "cclog.close_tickets_wizard"
     _description = "Close Request"
     _rec_name = 'rating'
 

@@ -2,17 +2,17 @@ from odoo import api, fields, models
 from datetime import datetime
 
 class ChangeAssignTicket(models.TransientModel):
-    _name = "itsm.assign_change_wizard"
+    _name = "cclog.assign_change_wizard"
     _description = "Assign Change"
     _rec_name = 'team_id'
 
     
     
     state =  fields.Selection([('new','New'),('validate','Validate'),('assign','Assign'),('plan','Plan'),('approve','Approve'),('reject','Reject'),('implement','Implement'),('close','close')],string="Status", required=True, default="validate")
-    team_id = fields.Many2one('itsm.team', string="Team")
-    agent_id = fields.Many2one('itsm.agent', string="Agent")
-    supervisor_id = fields.Many2one('itsm.agent', string="Supervisor",domain = [('change_cad','=','supervisor')]  )
-    manager_id = fields.Many2one('itsm.agent', string="Manager",domain = [('change_cad','=','manager')]  )
+    team_id = fields.Many2one('cclog.team', string="Team")
+    agent_id = fields.Many2one('cclog.agent', string="Agent")
+    supervisor_id = fields.Many2one('cclog.agent', string="Supervisor",domain = [('change_cad','=','supervisor')]  )
+    manager_id = fields.Many2one('cclog.agent', string="Manager",domain = [('change_cad','=','manager')]  )
     assign_date = fields.Datetime(string='Assignment Date', default=datetime.today())
     
     @api.onchange ('team_id')
@@ -24,7 +24,7 @@ class ChangeAssignTicket(models.TransientModel):
     @api.multi
     def change_assign_agent(self):
         self.write({'state': 'assign'})
-        changes = self.env['itsm.change'].browse(self._context.get('active_ids'))
+        changes = self.env['cclog.change'].browse(self._context.get('active_ids'))
         for change in changes:
             change.state = self.state
             change.team_id = self.team_id

@@ -2,7 +2,7 @@ from odoo import api, fields, models
 from datetime import datetime
 
 class IncidentResolveTicket(models.TransientModel):
-    _name = "itsm.tickets_incidents_resolve_wizard"
+    _name = "cclog.tickets_incidents_resolve_wizard"
     _description = "Resolve Incident"
     _rec_name = 'resolution_comment'
 
@@ -15,7 +15,7 @@ class IncidentResolveTicket(models.TransientModel):
     @api.multi
     def action_resolve_agent(self):
         self.write({'state': 'R'})
-        incidents = self.env['itsm.incident'].browse(self._context.get('active_ids'))
+        incidents = self.env['cclog.incident'].browse(self._context.get('active_ids'))
         for incident in incidents:
             incident.resolution_comment = self.resolution_comment
             incident.resolution_date = self.resolution_date

@@ -6,13 +6,13 @@
              <field name="arch" type="xml">
                 <tree string="All Requests">
                     <field name="title" />
-                    <field name="description" />
                     <field name="state" />
                     <field name="start_date" />
                     <field name="service_id" />
                     <field name="service_subcategory_id"/>
-                    <field name="team_id"/>
-                    <field name="agent_id"/>
+                    <field name="branch_id"/>
+                    <field name="agent"/>
+                    
                 </tree>
             </field>
         </record>
@@ -23,15 +23,19 @@
             <field name="arch" type="xml">
                 <form string="Create Request" create="false" edit="false">
                     <header>
-                    <button name="%(itsm.wizard_requests_assign_form_view)d" type="action" states='N' string="Assign" class="btn btn-primary" groups ="itsm.support_agents" />
-                    <button name="%(itsm.wizard_requests_assign_form_view)d" states='A' string="Re-Assign" class="btn btn-primary" type="action" groups ="itsm.support_agents"/>
-                    <button name="%(itsm.wizard_requests_pending_form_view)d" states='A' string="Pending" class="oe_highlight" type="action" groups ="itsm.support_agents"/>
-                    <button name="%(itsm.wizard_requests_resolve_form_view)d" states='A,P,RA' string="Resolve" class="oe_highlight" type="action" groups ="itsm.support_agents"/>
-                    <button name="action_reopen" states='R' string="Re Open" class="oe_highlight" type="object" groups ="itsm.portal_user"/>
-                    <button name="%(itsm.wizard_requests_close_form_view)d" states='R' string="Close" class="oe_highlight" type="action" groups ="itsm.portal_user"/>
+
                     <field name="state" widget="statusbar" statusbar_visible="N,A,RA,P,R,RO,C" invisible="1"/>
                     </header>
                     <sheet>
+                        <group>
+                            <field name="client_id"/>
+                        </group>
+                        <group>
+                            <field name="branch_id"/>
+                        </group>
+                        <group>
+                            <field name="agent"/>
+                        </group>
                         <group>
                             <field name="title"/>
                         </group>
@@ -57,7 +61,7 @@
       <!--
         <record model="ir.ui.view" id="assign_ticket_request_form_view">
             <field name="name">assign.request.form</field>
-            <field name="model">itsm.ticketassign</field>
+            <field name="model">cclog.ticketassign</field>
             <field name="arch" type="xml">
                 <form string="Assign Ticket" create="false" edit="false">
                     <sheet>
@@ -74,7 +78,7 @@
 
         <record model="ir.ui.view" id="resolve_ticket_request_form_view">
             <field name="name">resolve.request.form</field>
-            <field name="model">itsm.ticketresolve</field>
+            <field name="model">cclog.ticketresolve</field>
             <field name="arch" type="xml">
                 <form string="Resolve Ticket" create="false" edit="false">
                     <sheet>
@@ -91,7 +95,7 @@
 
         <record model="ir.ui.view" id="pending_ticket_request_form_view">
             <field name="name">pending.request.form</field>
-            <field name="model">itsm.ticketpending</field>
+            <field name="model">cclog.ticketpending</field>
             <field name="arch" type="xml">
                 <form string="Pending" create="false" edit="false">
                     <sheet>
@@ -108,7 +112,7 @@
 
         <record model="ir.ui.view" id="close_ticket_request_form_view">
             <field name="name">close.request.form</field>
-            <field name="model">itsm.ticketclosed</field>
+            <field name="model">cclog.ticketclosed</field>
             <field name="arch" type="xml">
                 <form string="Close" create="false" edit="false">
                     <sheet>
@@ -134,12 +138,8 @@
                     <field name="service_id" />
                     <field name="service_subcategory_id"/>
                     <field name="end_date" />
-                    <field name="team_id"/>
-                    <field name="agent_id"/>
+                 
                     <field name="state" />
-                       <separator/>
-                     <filter name="start_days" string="Today" domain="[('start_date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00'))]" />
-         
                 </search>
             </field>
         </record>
@@ -157,7 +157,7 @@
 
      
         
-        <menuitem id="main_service_menu" name="ITSM"/>
+        <menuitem id="main_service_menu" name="cclog"/>
         <menuitem id="helpdesk_menu" name="Request Ticket" parent="main_service_menu"/>
         <menuitem id="ticket_requests" name="Requests" parent="helpdesk_menu" action="request_list_action"/>
         

@@ -2,16 +2,16 @@ from odoo import api, fields, models
 from datetime import datetime
 
 class IncidentAssignTicket(models.TransientModel):
-    _name = "itsm.tickets_incidents_assign_wizard"
+    _name = "cclog.tickets_incidents_assign_wizard"
     _description = "Assign Incident"
     _rec_name = 'team_id'
 
     
-    team_id = fields.Many2one('itsm.team', string="Team")
+    team_id = fields.Many2one('cclog.team', string="Team")
     state = fields.Selection(
         [('N', 'New'), ('A', 'Assign'), ('RA', 'Re Assign'), ('P', 'Pending'), ('R', 'Resolved'), ('RO', 'Re Open'),
          ('C', 'Closed')], string="Status", required=True, default="N")
-    agent_id = fields.Many2one('itsm.agent', string="Agent")
+    agent_id = fields.Many2one('cclog.agent', string="Agent")
     assign_date = fields.Datetime(string='Assignment Date', default=datetime.today())
     
     @api.onchange ('team_id')
@@ -22,7 +22,7 @@ class IncidentAssignTicket(models.TransientModel):
     @api.multi
     def action_assign_agent(self):
         self.write({'state': 'A'})
-        incidents = self.env['itsm.incident'].browse(self._context.get('active_ids'))
+        incidents = self.env['cclog.incident'].browse(self._context.get('active_ids'))
         for incident in incidents:
             incident.state = self.state
             incident.team_id = self.team_id

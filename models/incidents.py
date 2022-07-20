@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class ticketincident(models.Model):
-    _name = "itsm.incident"
+    _name = "cclog.incident"
     _description = "This is the incident model"
     _rec_name = 'title'
 
@@ -24,8 +24,8 @@ class ticketincident(models.Model):
     rating = fields.Selection(
         [('very_satified', 'Very Satified'), ('satified', 'Satified'), ('disatified', 'Disatified')])
     closing_date = fields.Datetime(string='Close Date', default=datetime.today())
-    team_id = fields.Many2one('itsm.team', ondelete='cascade', string="Team", domain=[('state', '=', 'true')])
-    agent_id = fields.Many2one('itsm.agent', ondelete='cascade', string="Agent")
+    team_id = fields.Many2one('cclog.team', ondelete='cascade', string="Team", domain=[('state', '=', 'true')])
+    agent_id = fields.Many2one('cclog.agent', ondelete='cascade', string="Agent")
   
     @api.onchange ('service_id')
     def on_change_service_id(self):

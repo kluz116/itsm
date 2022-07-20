@@ -2,7 +2,7 @@ from odoo import api, fields, models
 from datetime import datetime
 
 class IncidentPendingTicket(models.TransientModel):
-    _name = "itsm.tickets_incidents_pending_wizard"
+    _name = "cclog.tickets_incidents_pending_wizard"
     _description = "Pending Incident"
     _rec_name = 'pending_comment'
 
@@ -16,7 +16,7 @@ class IncidentPendingTicket(models.TransientModel):
     @api.multi
     def action_pending_agent(self):
         self.write({'state': 'P'})
-        incidents = self.env['itsm.incident'].browse(self._context.get('active_ids'))
+        incidents = self.env['cclog.incident'].browse(self._context.get('active_ids'))
         for incident in incidents:
             incident.pending_comment = self.pending_comment
             incident.pending_date = self.pending_date

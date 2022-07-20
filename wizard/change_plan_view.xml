@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <odoo>
         <record id="plan_change_view_form_wizard" model="ir.ui.view">
-            <field name="name">itsm.plan_change.form</field>
-            <field name="model">itsm.plan_change</field>
+            <field name="name">cclog.plan_change.form</field>
+            <field name="model">cclog.plan_change</field>
             <field name="arch" type="xml">
                 <form string="Plan Change">
                          <group>
@@ -25,7 +25,7 @@
         <record id="wizard_plan_form_view" model="ir.actions.act_window">
             <field name="name">Plan Change</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">itsm.plan_change</field>
+            <field name="res_model">cclog.plan_change</field>
             <field name="view_mode">form</field>
             <field name="view_id" ref="plan_change_view_form_wizard"/>
             <field name="target">new</field>

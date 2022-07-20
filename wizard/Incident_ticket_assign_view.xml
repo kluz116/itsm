@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <odoo>
         <record id="assign_ticket_view_form_wizard" model="ir.ui.view">
-            <field name="name">itsm.tickets_incidents_assign.form</field>
-            <field name="model">itsm.tickets_incidents_assign_wizard</field>
+            <field name="name">cclog.tickets_incidents_assign.form</field>
+            <field name="model">cclog.tickets_incidents_assign_wizard</field>
             <field name="arch" type="xml">
                 <form string="Assign Ticket">
                     <group class="oe_title">
@@ -21,7 +21,7 @@
         <record id="wizard_assign_form_view" model="ir.actions.act_window">
             <field name="name">Assign Ticket</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">itsm.tickets_incidents_assign_wizard</field>
+            <field name="res_model">cclog.tickets_incidents_assign_wizard</field>
             <field name="view_mode">form</field>
             <field name="view_id" ref="assign_ticket_view_form_wizard"/>
             <field name="target">new</field>
@@ -31,8 +31,8 @@
         <record id="wizard_assign_form_view" model="ir.actions.act_window">
             <field name="name">Assign Incident</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">itsm.assign.incident.wizard</field>
-            <field name="src_model">itsm.incident</field>
+            <field name="res_model">cclog.assign.incident.wizard</field>
+            <field name="src_model">cclog.incident</field>
             <field name="view_mode">form</field>
             <field name="view_type">form</field>
            <field name="view_id" ref="wizard_form_view"/>

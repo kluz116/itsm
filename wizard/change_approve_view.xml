@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <odoo>
         <record id="approve_change_view_form_wizard" model="ir.ui.view">
-            <field name="name">itsm.approve_change_wizard.form</field>
-            <field name="model">itsm.approve_change_wizard</field>
+            <field name="name">cclog.approve_change_wizard.form</field>
+            <field name="model">cclog.approve_change_wizard</field>
             <field name="arch" type="xml">
                 <form string="Change Approve">
                     <group class="oe_title">
@@ -22,7 +22,7 @@
         <record id="wizard_change_approve_form_view" model="ir.actions.act_window">
             <field name="name">Assign Request</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">itsm.approve_change_wizard</field>
+            <field name="res_model">cclog.approve_change_wizard</field>
             <field name="view_mode">form</field>
             <field name="view_id" ref="approve_change_view_form_wizard"/>
             <field name="target">new</field>

@@ -2,7 +2,7 @@ from odoo import api, fields, models
 from datetime import datetime
 
 class PlanChange(models.TransientModel):
-    _name = "itsm.plan_change"
+    _name = "cclog.plan_change"
     _description = "Plan Change"
     _rec_name = 'fallback_plan'
 
@@ -17,7 +17,7 @@ class PlanChange(models.TransientModel):
     @api.multi
     def action_plan_change(self):
         self.write({'state': 'approve'})
-        changes = self.env['itsm.change'].browse(self._context.get('active_ids'))
+        changes = self.env['cclog.change'].browse(self._context.get('active_ids'))
         for change in changes:
             change.state = self.state
             change.fallback_plan = self.fallback_plan

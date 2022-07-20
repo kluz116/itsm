@@ -9,22 +9,21 @@ class ticketrequest(models.Model):
 
     title = fields.Char(string='Title', required=True)
     description  = fields.Text(string="Description", required=True)
+    branch_id = fields.Many2one('cclog.branch',string ='Branch Or Department', required=True)
+    agent = fields.Many2one('res.partner','Agent',domain="[('branch_id_cclog', '=', branch_id)]")
     state =  fields.Selection([('N','New'),('A','Assign'),('RA','Re Assign'),('P','Pending'),('R','Resolved'),('RO','Re Open'),('C','Closed')],string="Status", required=True, default="N")
     start_date = fields.Datetime(string='Start Date', default=datetime.today())
     end_date = fields.Datetime(string='Start Date')
     close_date = fields.Datetime(string='Close Date')
-    service_id = fields.Many2one('services.services',ondelete='cascade',string='Service')
-    service_subcategory_id = fields.Many2one('services.subcategory',ondelete='cascade', string="Service Sub Category",domain = [('request_type','=','R')]  )
+    client_id = fields.Many2one('cclog.client',ondelete='cascade',string='Client')
+    service_id = fields.Many2one('services.services',ondelete='cascade',string='Disposition')
+    service_subcategory_id = fields.Many2one('services.subcategory',ondelete='cascade', string="Disposition Sub Category",domain = [('request_type','=','R')]  )
     resolution_comment = fields.Text(string="Comment")
     resolution_date = fields.Datetime(string='Resolution Date', default=datetime.today())
     pending_comment = fields.Text(string="Pending Comment")
     pending_date = fields.Datetime(string='Pending Date Date', default=datetime.today())
-    rating = fields.Selection(
-        [('very_satified', 'Very Satified'), ('satified', 'Satified'), ('disatified', 'Disatified')])
+    rating = fields.Selection([('very_satified', 'Very Satified'), ('satified', 'Satified'), ('disatified', 'Disatified')])
     closing_date = fields.Datetime(string='Close Date', default=datetime.today())
-    team_id = fields.Many2one('itsm.team', ondelete='cascade', string="Team", domain=[('state', '=', 'true')])
-    agent_id = fields.Many2one('itsm.agent', ondelete='cascade', string="Agent")
-  
 
         
     def action_resolve(self):
@@ -38,8 +37,8 @@ class ticketrequest(models.Model):
         'context': {},
         'view_type': 'form',
         'view_mode': 'form',
-        'views': [(self.env.ref('itsm.resolve_ticket_request_form_view').id, 'form')],
-        'view_id': self.env.ref('itsm.resolve_ticket_request_form_view').id,
+        'views': [(self.env.ref('cclog.resolve_ticket_request_form_view').id, 'form')],
+        'view_id': self.env.ref('cclog.resolve_ticket_request_form_view').id,
         'target': 'new'
         }
     
@@ -58,8 +57,8 @@ class ticketrequest(models.Model):
         'context': {},
         'view_type': 'form',
         'view_mode': 'form',
-        'views': [(self.env.ref('itsm.pending_ticket_request_form_view').id, 'form')],
-        'view_id': self.env.ref('itsm.pending_ticket_request_form_view').id,
+        'views': [(self.env.ref('cclog.pending_ticket_request_form_view').id, 'form')],
+        'view_id': self.env.ref('cclog.pending_ticket_request_form_view').id,
         'target': 'new'
         }
 
@@ -78,22 +77,22 @@ class ticketrequest(models.Model):
         'context': {},
         'view_type': 'form',
         'view_mode': 'form',
-        'views': [(self.env.ref('itsm.close_ticket_request_form_view').id, 'form')],
-        'view_id': self.env.ref('itsm.close_ticket_request_form_view').id,
+        'views': [(self.env.ref('cclog.close_ticket_request_form_view').id, 'form')],
+        'view_id': self.env.ref('cclog.close_ticket_request_form_view').id,
         'target': 'new'
         }
 
 class TicketAssign(models.Model):
-    _name ="itsm.ticketassign"
+    _name ="cclog.ticketassign"
     _description = ""
     _rec_name ='team_id'
 
-    team_id = fields.Many2one('itsm.team',ondelete='cascade', string="Team")
-    agent_id = fields.Many2one('itsm.agent',ondelete='cascade', string="Agent", domain=[('team_id','in','team_id')])
+    team_id = fields.Many2one('cclog.team',ondelete='cascade', string="Team")
+    agent_id = fields.Many2one('cclog.agent',ondelete='cascade', string="Agent", domain=[('team_id','in','team_id')])
     assign_date =  fields.Datetime(string='Assignment Date', default=datetime.today())
 
 class TicketResolve(models.Model):
-    _name ="itsm.ticketresolve"
+    _name ="cclog.ticketresolve"
     _description = ""
     _rec_name ='resolution_comment'
 
@@ -101,7 +100,7 @@ class TicketResolve(models.Model):
     resolution_date =  fields.Datetime(string='Resolution Date', default=datetime.today())
 
 class TicketPending(models.Model):
-    _name ="itsm.ticketpending"
+    _name ="cclog.ticketpending"
     _description = ""
     _rec_name ='pending_comment'
 
@@ -109,7 +108,7 @@ class TicketPending(models.Model):
     pending_date =  fields.Datetime(string='Pending Date Date', default=datetime.today())
 
 class TicketClosing(models.Model):
-    _name ="itsm.ticketclosed"
+    _name ="cclog.ticketclosed"
     _description = ""
     _rec_name ='rating'
 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <record id="view_client_tree" model="ir.ui.view">
+            <field name="name">cclog.client.tree</field>
+            <field name="model">cclog.client</field>
+             <field name="arch" type="xml">
+                <tree string="All Clients">
+                    <field name="name" />
+                    <field name="phone" />
+                    <field name="client_id" />
+                    <field name="account_id" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="client_form_view">
+            <field name="name">client.form</field>
+            <field name="model">cclog.client</field>
+            <field name="arch" type="xml">
+                <form string="Add Client" create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="phone"/>
+                        </group>
+                         <group>
+                            <field name="client_id"/>
+                            <field name="account_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+   
+
+        <record model="ir.ui.view" id="client_search_view">
+            <field name="name">client.search</field>
+            <field name="model">cclog.client</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="client_id"/>
+                    <field name="account_id"/>
+                    <field name="name"/>
+                    <field name="phone"/>
+                </search>
+            </field>
+        </record>
+
+  
+  
+        <record model="ir.actions.act_window" id="client_list_action">
+            <field name="name">Clients</field>
+            <field name="res_model">cclog.client</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create Clients</p>
+            </field>
+        </record>
+
+    
+
+        <menuitem id="main_service_menu" name="CCLOG"/>
+        <menuitem id="service_menu_client" name="Client Managment" parent="main_service_menu" />
+        <menuitem id="Clients" name="Clients" parent="service_menu_client" action="client_list_action"/>
+        
+        
+</odoo>
