@@ -18,7 +18,7 @@ class RequestCloseTicket(models.TransientModel):
     @api.multi
     def action_close_request_agent(self):
         self.write({'state': 'C'})
-        requests = self.env['ticket.request'].browse(self._context.get('active_ids'))
+        requests = self.env['cclog.request'].browse(self._context.get('active_ids'))
         for request in requests:
             request.rating = self.rating
             request.closing_date = self.closing_date

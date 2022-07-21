@@ -1,11 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_cclog_cclog3,cclog.cclog,model_ticket_request,support_agents,1,1,1,0
+access_cclog_cclog3,cclog.cclog,model_cclog_request,support_agents,1,1,1,0
 access_cclog_cclog4,cclog.cclog,model_services_services,support_agents,1,1,1,0
 access_cclog_cclog5,cclog.cclog,model_services_subcategory,support_agents,1,1,1,0
 access_cclog_cclog35,cclog.cclog,model_cclog_client,support_agents,1,1,1,0
-access_cclog_cclo5,cclog.cclog,model_cclog_team,support_agents,1,1,1,0
-access_cclog_cclxo5,cclog.cclog,model_cclog_agent,support_agents,1,1,1,0
-access_cclog_cclog6,cclog.cclog,model_ticket_request,support_agents,1,1,1,0
+access_cclog_cclog6,cclog.cclog,model_cclog_request,support_agents,1,1,1,0
 access_cclog_cclog7,cclog.cclog,model_cclog_incident,portal_users,1,1,1,0
 access_cclog_cclog8,cclog.cclog,model_cclog_incident,support_agents,1,1,1,0
 access_cclog_cclogx,cclog.cclog,model_services_services,support_agents,1,1,1,0

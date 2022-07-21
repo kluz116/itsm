@@ -4,11 +4,11 @@
             <field name="name">cclog.tickets_incidents_assign.form</field>
             <field name="model">cclog.tickets_incidents_assign_wizard</field>
             <field name="arch" type="xml">
-                <form string="Assign Ticket">
+                <form string="Re-Assign Ticket">
                     <group class="oe_title">
-                         <field name="state" readonly="1" />
-                         <field name="team_id"/>
-                         <field name="agent_id"/>
+                         
+                         <field name="branch_id"/>
+                         <field name="agent"/>
                     </group>
                     <footer>
                         <button name="action_assign_agent" string="Assign" type="object" class="btn-primary"/>
@@ -18,7 +18,7 @@
             </field>
         </record>
 
-        <record id="wizard_assign_form_view" model="ir.actions.act_window">
+        <record id="wizard_assign_form_view_reassign" model="ir.actions.act_window">
             <field name="name">Assign Ticket</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">cclog.tickets_incidents_assign_wizard</field>
@@ -27,15 +27,4 @@
             <field name="target">new</field>
         </record>
 
-       <!--    
-        <record id="wizard_assign_form_view" model="ir.actions.act_window">
-            <field name="name">Assign Incident</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">cclog.assign.incident.wizard</field>
-            <field name="src_model">cclog.incident</field>
-            <field name="view_mode">form</field>
-            <field name="view_type">form</field>
-           <field name="view_id" ref="wizard_form_view"/>
-           <field name="target">new</field>
-        </record>-->
 </odoo>

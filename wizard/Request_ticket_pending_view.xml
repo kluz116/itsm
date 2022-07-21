@@ -15,7 +15,7 @@
                         </group>
                     </sheet>
                     <footer>
-                        <button name="action_pending_request" string="Pending" type="object" class="btn-primary"/>
+                        <button name="action_pending_agent" string="Pending" type="object" class="btn-primary"/>
                         <button string="Cancel" class="btn-secondary" special="cancel"/>
                     </footer>
                 </form>

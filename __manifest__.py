@@ -27,24 +27,18 @@
         'security/change_security.xml',
         'security/ir.model.access.csv',
         'wizard/Request_ticket_resolve_view.xml',
-        'wizard/Incident_ticket_assign_view.xml',
+        'wizard/Request_ticket_close_view.xml',
         'wizard/incident.tickets.resolve.xml',
         'wizard/Request_ticket_pending_view.xml',
         'wizard/incidents_ticket_close.xml',
-        'wizard/incident_tickets_pending.xml',
+        'wizard/Incident_ticket_assign_view.xml',
         'views/services.xml',
         'views/templates.xml',
         'views/helpdesk.xml',
-        'views/config.inc.xml',
         'views/client.xml',
         'views/branch.xml',
-        'views/spots_user.xml',
-       
-        #'wizard/Incident_ticket_assign_view.xml',
-        ##'wizard/incident.tickets.resolve.xml',
-        #'wizard/incidents_ticket_close.xml',
-       # 'wizard/incident_tickets_pending.xml',
-    ],
+        'views/spots_user.xml'
+        ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',

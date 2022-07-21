@@ -6,7 +6,7 @@
     <field name="inherit_id" ref="base.view_users_form" />
     <field name="arch" type="xml">
       <xpath expr="//page/group/field[@name='signature']" position="before">
-        <group string="Spot Check Settings">
+        <group string="CCLOG">
           <field string="Branch Name" name="branch_id_cclog" readonly="0" />
           <field string="Role" name="user_role" readonly="0" />
         

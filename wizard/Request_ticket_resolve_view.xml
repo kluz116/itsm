@@ -8,21 +8,21 @@
                     <sheet>
                         <group>
                          <field name="state" readonly="1" />
-                            <field name="resolution_comment"/>
+                         <field name="resolution_comment"/>
                         </group>
                         <group>
                             <field name="resolution_date"  invisible="1"/>
                         </group>
                     </sheet>
                     <footer>
-                        <button name="action_requests_resolve_agent" string="Assign" type="object" class="btn-primary"/>
+                        <button name="action_requests_resolve_agent" string="Resolve" type="object" class="btn-primary"/>
                         <button string="Cancel" class="btn-secondary" special="cancel"/>
                     </footer>
                 </form>
             </field>
         </record>
 
-        <record id="wizard_requests_resolve_form_view" model="ir.actions.act_window">
+        <record id="wizard_requests_resolve" model="ir.actions.act_window">
             <field name="name">Resolve Request</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">cclog.resolve_ticket</field>

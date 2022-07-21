@@ -16,7 +16,7 @@ class RequestsPendingTicket(models.TransientModel):
     @api.multi
     def action_pending_agent(self):
         self.write({'state': 'P'})
-        requests = self.env['ticket.request'].browse(self._context.get('active_ids'))
+        requests = self.env['cclog.request'].browse(self._context.get('active_ids'))
         for req in requests:
             req.pending_comment = self.pending_comment
             req.pending_date = self.pending_date
