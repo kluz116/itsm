@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <!--Email template -->
+        <record id="email_template_create_request" model="mail.template">
+            <field name="name">CCLOG: New Request</field>
+            <field name="model_id" ref="model_cclog_request"/>
+            <field name="email_from">cclog@financetrust.co.ug</field>
+            <field name="email_to">${object.agent.email}</field>
+            <field name="email_cc">Allan.musembya@financetrust.co.ug</field>
+            <field name="subject">${object.title}</field>
+            <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                <p style="margin: 0px; padding: 0px; font-size: 18px;">
+                    Hello ${object.agent.name},
+                    <br /><br />
+
+                    You have been assigned a customer request for ${client_id.name} on CCLOG by ${object.created_by} on ${object.start_date}
+                    <br/>
+                    Issue : ${object.title}
+                    <br/>
+                    Description : ${object.description}
+                    <br/>
+                    <br/>
+                    
+                    <div class="col text-center">
+                        <a class="btn btn-success btn-sm" role="button" href="${}"> ${object.agent.name} please click on this link to access ticket.</a>
+                    </div>
+                    
+                    <br/><br/>
+                    Regards,<br/>
+                    cclog
+                
+                </p>
+            </div>
+            </field>
+           <!--<field name="report_template" ref="account_invoices"/>
+            <field name="report_name"></field>-->  
+        </record>
+
+    </data>
+</odoo>

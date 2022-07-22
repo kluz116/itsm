@@ -20,12 +20,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['mail','base'],
 
     # always loaded
     'data': [
         'security/change_security.xml',
         'security/ir.model.access.csv',
+        'data/email_template_cash_managment.xml',
         'wizard/Request_ticket_resolve_view.xml',
         'wizard/Request_ticket_close_view.xml',
         'wizard/incident.tickets.resolve.xml',
@@ -33,7 +34,6 @@
         'wizard/incidents_ticket_close.xml',
         'wizard/Incident_ticket_assign_view.xml',
         'views/services.xml',
-        'views/templates.xml',
         'views/helpdesk.xml',
         'views/client.xml',
         'views/branch.xml',

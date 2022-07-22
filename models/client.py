@@ -8,7 +8,7 @@ class Client(models.Model):
     name = fields.Char(string='Name', required=True)
     client_id = fields.Char(string='Client ID', required=True)
     account_id = fields.Char(string='Account Number', required=True)
-    phone = fields.Char(string='Phone ', required=True)
+    phone = fields.Char(string='Phone ')
     combination = fields.Char(string='Combination', compute='_compute_fields_combination')
 
     @api.depends('name', 'account_id')

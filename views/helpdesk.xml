@@ -23,11 +23,12 @@
             <field name="arch" type="xml">
                 <form string="Create Request" create="false" edit="false">
                     <header>
-                    <button name="%(itsm.wizard_assign_form_view_reassign)d" states='A' string="Re Assign Ticket" class="btn btn-success" type="action" />
-                    <button name="%(itsm.wizard_requests_pending_form_view)d" states='A' string="Mark Pending" type="action" class="btn btn-warning"  />
-                    <button name="%(itsm.wizard_requests_resolve)d" states='A,P,RA,RO' string="Resolve Ticket" class="btn btn-primary" type="action" />
-                    <button name="action_reopen" states='R' string="Re Open Ticket" class="btn btn-primary" type="object"/>
-                    <button name="%(itsm.wizard_requests_close_form_view)d" states='R' string="Close Ticket" class="btn btn-danger" type="action" />
+                    <button name="%(itsm.wizard_assign_form_view_reassign)d" states='A' string="Re Assign Ticket" attrs="{'invisible':['|',('current_agent', '=', False)]}"  class="btn btn-success" type="action" />
+                    <button name="%(itsm.wizard_requests_pending_form_view)d" states='A' string="Mark Pending" attrs="{'invisible':['|',('current_agent', '=', False)]}"  type="action" class="btn btn-warning"  />
+                    <button name="%(itsm.wizard_requests_resolve)d" states='A,P,RA,RO' string="Resolve Ticket" attrs="{'invisible':['|',('current_agent', '=', False)]}"  class="btn btn-primary" type="action" />
+                    <button name="action_reopen" states='R' string="Re Open Ticket" class="btn btn-primary" type="object" groups="cclog.cclog_admin"  />
+                    <button name="%(itsm.wizard_requests_close_form_view)d" states='R' string="Close Ticket" class="btn btn-danger" type="action"  groups="cclog.cclog_admin"  />
+                    <field name ="current_agent" invisible ='1'/>
                     <field name="state" widget="statusbar" statusbar_visible="N,A,RA,P,R,RO,C" />
                     </header>
                     <sheet>

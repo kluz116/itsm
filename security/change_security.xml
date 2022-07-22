@@ -7,25 +7,6 @@
         <field name="sequence">20</field>
     </record>
 
-    <record id="change_agents" model="res.groups">
-        <field name="name">Change Agents</field>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        <field name="category_id" ref="module_cclog"/>
-    </record>
-
-    <record id="change_supervisor" model="res.groups">
-        <field name="name">Change Supervisor</field>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        <field name="category_id" ref="module_cclog"/>
-       <!--- <field name="implied_ids" eval="[(4, ref('change_agents'))]"/>-->
-       
-    </record>
-    <record id="change_approver" model="res.groups">
-        <field name="name">Change Approver</field>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        <field name="category_id" ref="module_cclog"/>
-    </record>
-
 
     <record id="support_agents" model="res.groups">
         <field name="name">Support Agents</field>
@@ -42,6 +23,10 @@
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         <field name="category_id" ref="module_cclog"/>
     </record>
-
+    <record id="cclog_admin" model="res.groups">
+        <field name="name">CCLOG Category A</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="module_cclog"/>
+    </record>
 
 </odoo>
