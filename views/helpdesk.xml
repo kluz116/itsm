@@ -35,19 +35,19 @@
                     </header>
                     <sheet>
                         <group>
-                            <field name="service_id" options="{'no_quick_create':True,'no_quick_edit':True,'no_open':True}"/>
+                            <field name="service_id"  options="{'no_quick_create':True,'no_quick_edit':True,'no_open':True,'no_create': True, 'no_create_edit':True}" />
                         </group>
                         <group>
-                            <field name="service_subcategory_id" options="{'no_quick_create':True,'no_quick_edit':True,'no_open':True}"/>
+                            <field name="service_subcategory_id" options="{'no_quick_create':True,'no_quick_edit':True,'no_open':True,'no_create': True, 'no_create_edit':True}" />
                         </group>
                         <group>
-                            <field name="client_id" />
+                            <field name="client_id" options="{'no_quick_create':True,'no_quick_edit':True,'no_open':True,'no_create': True, 'no_create_edit':True}"/>
                         </group>
                         <group>
-                            <field name="branch_id" options="{'no_quick_create':True,'no_quick_edit':True,'no_open':True}"/>
+                            <field name="branch_id" options="{'no_quick_create':True,'no_quick_edit':True,'no_open':True,'no_create': True, 'no_create_edit':True}" />
                         </group>
                         <group>
-                            <field name="agent" options="{'no_quick_create':True,'no_quick_edit':True,'no_open':True}"/>
+                            <field name="agent" options="{'no_quick_create':True,'no_quick_edit':True,'no_open':True,'no_create': True, 'no_create_edit':True}"/>
                         </group>
                         <group>
                             <field name="title"/>

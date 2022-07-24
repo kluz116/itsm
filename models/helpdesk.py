@@ -18,7 +18,7 @@ class ticketrequest(models.Model):
     trx_proof = fields.Binary(string='Upload File', attachment=True)
     client_id = fields.Many2one('cclog.client',ondelete='cascade',string='Client')
     service_id = fields.Many2one('cclog.services',ondelete='cascade',string='Disposition')
-    service_subcategory_id = fields.Many2one('cclog.subcategory',ondelete='cascade', string="Disposition Sub Category",domain = [('request_type','=','R')]  )
+    service_subcategory_id = fields.Many2one('cclog.subcategory',string="Disposition Sub Category",domain = " [('service_id','=',service_id)] " )
     resolution_comment = fields.Text(string="Comment")
     resolution_date = fields.Datetime(string='Resolution Date', default=datetime.today())
     pending_comment = fields.Text(string="Pending Comment")
