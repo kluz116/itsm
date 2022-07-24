@@ -23,4 +23,7 @@ class IncidentAssignTicket(models.TransientModel):
             incident.branch_id = self.branch_id.id
             incident.agent = self.agent.id
             incident.assign_date = self.assign_date
+            template_id = self.env.ref('cclog.email_template_create_request').id
+            template =  self.env['mail.template'].browse(template_id)
+            template.send_mail(incident.id,force_send=True)
         

@@ -26,7 +26,8 @@
     'data': [
         'security/change_security.xml',
         'security/ir.model.access.csv',
-        'data/email_template_cash_managment.xml',
+        'data/email_template_cclog.xml',
+        'data/ir_cron_data.xml',
         'wizard/Request_ticket_resolve_view.xml',
         'wizard/Request_ticket_close_view.xml',
         'wizard/incident.tickets.resolve.xml',

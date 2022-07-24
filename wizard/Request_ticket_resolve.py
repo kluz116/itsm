@@ -17,7 +17,12 @@ class RequestResolveTicket(models.TransientModel):
         self.write({'state': 'R'})
         requests = self.env['cclog.request'].browse(self._context.get('active_ids'))
         for request in requests:
+        
             requests.resolution_comment = self.resolution_comment
             requests.resolution_date = self.resolution_date
             requests.state = self.state
+
+            template_id = self.env.ref('cclog.email_template_resolved_request').id
+            template =  self.env['mail.template'].browse(template_id)
+            template.send_mail(request.id,force_send=True)
     

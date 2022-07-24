@@ -23,5 +23,9 @@ class RequestCloseTicket(models.TransientModel):
             request.rating = self.rating
             request.closing_date = self.closing_date
             request.state = self.state
+
+            template_id = self.env.ref('cclog.email_template_resolved_Closed').id
+            template =  self.env['mail.template'].browse(template_id)
+            template.send_mail(request.id,force_send=True)
     
 

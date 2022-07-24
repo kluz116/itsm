@@ -1,0 +1,224 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <!--Email template -->
+        <record id="email_template_create_request" model="mail.template">
+            <field name="name">CCLOG: New Request</field>
+            <field name="model_id" ref="model_cclog_request"/>
+            <field name="email_from">Allan.musembya@financetrust.co.ug</field>
+            <field name="email_to">${object.agent.email}</field>
+            <field name="email_cc">Allan.musembya@financetrust.co.ug</field>
+            <field name="subject">${object.title}</field>
+            <field name="body_html" type="html">
+                    <div style="margin: 0px; padding: 0px;">
+                    
+                            <p style="margin: 0px; padding: 0px; font-size: 18px;">
+                                Hello ${object.agent.name},
+                                <br /><br />
+
+                                You have been assigned a customer request for ${object.client_id.combination} on CCLOG by ${object.created_by.name} on ${object.start_date}
+                                <br/>
+                                Issue : ${object.title}
+                                <br/>
+                                Description : ${object.description}
+                                <br/>
+                                <br/>
+                                
+                                <div class="col text-center">
+                                    <a class="btn btn-success btn-sm" role="button" href="${object.base_url}"> ${object.agent.name} please click on this link to access ticket.</a>
+                                </div>
+                                
+                                <br/><br/>
+                                Regards,<br/>
+                                cclog
+                            
+                            </p>
+                    </div>
+            </field>
+        </record>
+
+        <record id="email_template_resolved_request" model="mail.template">
+            <field name="name">CCLOG: Request Resolved</field>
+            <field name="model_id" ref="model_cclog_request"/>
+            <field name="email_from">cclog@financetrust.co.ug</field>
+            <field name="email_to">Allan.musembya@financetrust.co.ug,${object.agent.email}</field>
+            <field name="email_cc">Allan.musembya@financetrust.co.ug</field>
+            <field name="subject">${object.title}</field>
+            <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                <p style="margin: 0px; padding: 0px; font-size: 18px;">
+                    Hello Team,
+                    <br /><br />
+
+                    Customer request for ${object.client_id.combination} on CCLOG by ${object.created_by.name} on ${object.start_date} has been resolved by ${object.agent.name}
+                    <br/>
+                    Issue : ${object.title}
+                    <br/>
+                    Description : ${object.description}
+                    <br/>
+                    <br/>
+                    
+                    <div class="col text-center">
+                        <a class="btn btn-success btn-sm" role="button" href="${object.base_url}"> ${object.agent.name} please click on this link to access ticket.</a>
+                    </div>
+                    
+                    <br/><br/>
+                    Regards,<br/>
+                    cclog
+                
+                </p>
+            </div>
+            </field>
+           <!--<field name="report_template" ref="account_invoices"/>
+            <field name="report_name"></field>-->  
+        </record>
+
+        <record id="email_template_resolved_Closed" model="mail.template">
+            <field name="name">CCLOG: Request Closed</field>
+            <field name="model_id" ref="model_cclog_request"/>
+            <field name="email_from">cclog@financetrust.co.ug</field>
+            <field name="email_to">Allan.musembya@financetrust.co.ug,${object.agent.email}</field>
+            <field name="email_cc">Allan.musembya@financetrust.co.ug</field>
+            <field name="subject">${object.title}</field>
+            <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                <p style="margin: 0px; padding: 0px; font-size: 18px;">
+                    Hello Team,
+                    <br /><br />
+
+                    Customer request for ${object.client_id.combination} on CCLOG by ${object.created_by.name} on ${object.start_date} has been closed off
+                    <br/>
+                    Issue : ${object.title}
+                    <br/>
+                    Description : ${object.description}
+                    <br/>
+                    <br/>
+                    
+                    <div class="col text-center">
+                        <a class="btn btn-success btn-sm" role="button" href="${object.base_url}"> please click on this link to access ticket.</a>
+                    </div>
+                    
+                    <br/><br/>
+                    Regards,<br/>
+                    cclog
+                
+                </p>
+            </div>
+            </field>
+           <!--<field name="report_template" ref="account_invoices"/>
+            <field name="report_name"></field>-->  
+        </record>
+
+
+         <record id="email_template_pending_request" model="mail.template">
+            <field name="name">CCLOG: Request Resolved</field>
+            <field name="model_id" ref="model_cclog_request"/>
+            <field name="email_from">cclog@financetrust.co.ug</field>
+            <field name="email_to">Allan.musembya@financetrust.co.ug,${object.agent.email}</field>
+            <field name="email_cc">Allan.musembya@financetrust.co.ug</field>
+            <field name="subject">${object.title}</field>
+            <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                <p style="margin: 0px; padding: 0px; font-size: 18px;">
+                    Hello Team,
+                    <br /><br />
+
+                    Customer request for ${object.client_id.combination} on CCLOG by ${object.created_by.name} on ${object.start_date} has been marked pending by  ${object.agent.name}
+                    <br/>
+                    Issue : ${object.title}
+                    <br/>
+                    Description : ${object.description}
+                    <br/>
+                    <br/>
+                    
+                    <div class="col text-center">
+                        <a class="btn btn-success btn-sm" role="button" href="${object.base_url}"> ${object.agent.name} please click on this link to access ticket.</a>
+                    </div>
+                    
+                    <br/><br/>
+                    Regards,<br/>
+                    cclog
+                
+                </p>
+            </div>
+            </field>
+           <!--<field name="report_template" ref="account_invoices"/>
+            <field name="report_name"></field>-->  
+        </record>
+
+        
+        <record id="email_template_reopen_request" model="mail.template">
+            <field name="name">CCLOG: Request Reopen</field>
+            <field name="model_id" ref="model_cclog_request"/>
+            <field name="email_from">cclog@financetrust.co.ug</field>
+            <field name="email_to">Allan.musembya@financetrust.co.ug,${object.agent.email}</field>
+            <field name="email_cc">Allan.musembya@financetrust.co.ug</field>
+            <field name="subject">${object.title}</field>
+            <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                <p style="margin: 0px; padding: 0px; font-size: 18px;">
+                    Hello Team,
+                    <br /><br />
+
+                    Customer request for ${object.client_id.combination} on CCLOG by ${object.created_by.name} on ${object.start_date} has been re-opened
+                    <br/>
+                    Issue : ${object.title}
+                    <br/>
+                    Description : ${object.description}
+                    <br/>
+                    <br/>
+                    
+                    <div class="col text-center">
+                        <a class="btn btn-success btn-sm" role="button" href="${object.base_url}"> ${object.agent.name} please click on this link to access ticket.</a>
+                    </div>
+                    
+                    <br/><br/>
+                    Regards,<br/>
+                    cclog
+                
+                </p>
+            </div>
+            </field>
+           <!--<field name="report_template" ref="account_invoices"/>
+            <field name="report_name"></field>-->  
+        </record>
+
+
+        <record id="email_template_ongoing_request" model="mail.template">
+            <field name="name">CCLOG: Ongoing Request</field>
+            <field name="model_id" ref="model_cclog_request"/>
+            <field name="email_from">Allan.musembya@financetrust.co.ug</field>
+            <field name="email_to">${object.agent.email}</field>
+            <field name="email_cc">Allan.musembya@financetrust.co.ug</field>
+            <field name="subject">${object.title}</field>
+            <field name="body_html" type="html">
+                    <div style="margin: 0px; padding: 0px;">
+                    
+                            <p style="margin: 0px; padding: 0px; font-size: 18px;">
+                                Hello ${object.agent.name},
+                                <br /><br />
+
+                                There is still an ongoing customer request for ${object.client_id.combination} on CCLOG by ${object.created_by.name} on ${object.start_date}. Take time and look at the request and resolve it to stop this escalation 
+                                <br/>
+                                Issue : ${object.title}
+                                <br/>
+                                Description : ${object.description}
+                                <br/>
+                                <br/>
+                                
+                                <div class="col text-center">
+                                    <a class="btn btn-success btn-sm" role="button" href="${object.base_url}"> ${object.agent.name} please click on this link to access ticket.</a>
+                                </div>
+                                
+                                <br/><br/>
+                                Regards,<br/>
+                                cclog
+                            
+                            </p>
+                    </div>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

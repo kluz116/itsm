@@ -10,6 +10,7 @@ class Client(models.Model):
     account_id = fields.Char(string='Account Number', required=True)
     phone = fields.Char(string='Phone ')
     combination = fields.Char(string='Combination', compute='_compute_fields_combination')
+    
 
     @api.depends('name', 'account_id')
     def _compute_fields_combination(self):

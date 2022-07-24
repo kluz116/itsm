@@ -27,6 +27,14 @@
                             <field name="client_id"/>
                             <field name="account_id"/>
                         </group>
+                        <notebook>
+                            <page string="Customer Requests">
+                              <group>
+                                   
+                              </group>
+                              
+                            </page>
+                        </notebook>  
                     </sheet>
                 </form>
             </field>

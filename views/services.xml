@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
         <record id="view_services_tree" model="ir.ui.view">
-            <field name="name">services.services.tree</field>
-            <field name="model">services.services</field>
+            <field name="name">cclog.services.tree</field>
+            <field name="model">cclog.services</field>
              <field name="arch" type="xml">
                 <tree string="All Services">
                     <field name="servicename" />
@@ -11,8 +11,8 @@
         </record>
 
         <record model="ir.ui.view" id="service_form_view">
-            <field name="name">services.form</field>
-            <field name="model">services.services</field>
+            <field name="name">cclog.form</field>
+            <field name="model">cclog.services</field>
             <field name="arch" type="xml">
                 <form string="Add Service" create="false" edit="false">
                     <sheet>
@@ -24,8 +24,8 @@
             </field>
         </record>
         <record model="ir.ui.view" id="subcategory_form_view">
-            <field name="name">services.subcategory.form</field>
-            <field name="model">services.subcategory</field>
+            <field name="name">cclog.subcategory.form</field>
+            <field name="model">cclog.subcategory</field>
             <field name="arch" type="xml">
                 <form string="Add Service sub Category" create="false" edit="false">
                     <sheet>
@@ -43,8 +43,8 @@
             </field>
         </record>
         <record id="view_services_subcategory_tree" model="ir.ui.view">
-            <field name="name">services.subcategory.tree</field>
-            <field name="model">services.subcategory</field>
+            <field name="name">cclog.subcategory.tree</field>
+            <field name="model">cclog.subcategory</field>
              <field name="arch" type="xml">
                 <tree string="All Services Sub-categories">
                     <field name="service_subcategory_name" />
@@ -55,8 +55,8 @@
         </record>
 
         <record model="ir.ui.view" id="services_search_view">
-            <field name="name">services.search</field>
-            <field name="model">services.services</field>
+            <field name="name">cclog.search</field>
+            <field name="model">cclog.services</field>
             <field name="arch" type="xml">
                 <search>
                     <field name="servicename"/>
@@ -65,8 +65,8 @@
         </record>
 
        <record id="view_services_subcategory_search" model="ir.ui.view">
-            <field name="name">services.subcategory.tree</field>
-            <field name="model">services.subcategory</field>
+            <field name="name">cclog.subcategory.tree</field>
+            <field name="model">cclog.subcategory</field>
              <field name="arch" type="xml">
                 <search>
                     <field name="service_subcategory_name" />
@@ -78,20 +78,20 @@
 
   
         <record model="ir.actions.act_window" id="service_list_action">
-            <field name="name">Services</field>
-            <field name="res_model">services.services</field>
+            <field name="name">Dispositions</field>
+            <field name="res_model">cclog.services</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">Create service</p>
+                <p class="o_view_nocontent_smiling_face">Dispositions</p>
             </field>
         </record>
 
         <record model="ir.actions.act_window" id="service_subcategory_list_action">
-            <field name="name">Services Sub-category</field>
-            <field name="res_model">services.subcategory</field>
+            <field name="name">Disposition Sub Category</field>
+            <field name="res_model">cclog.subcategory</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">Create Service Sub-Category</p>
+                <p class="o_view_nocontent_smiling_face">Disposition Sub Category</p>
             </field>
         </record>
 

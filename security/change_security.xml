@@ -7,19 +7,8 @@
         <field name="sequence">20</field>
     </record>
 
-
     <record id="support_agents" model="res.groups">
         <field name="name">Support Agents</field>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        <field name="category_id" ref="module_cclog"/>
-    </record>
-     <record id="portal_users" model="res.groups">
-        <field name="name">Portal User</field>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        <field name="category_id" ref="module_cclog"/>
-    </record>
-    <record id="service_manager" model="res.groups">
-        <field name="name">Service Manager</field>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         <field name="category_id" ref="module_cclog"/>
     </record>
@@ -28,5 +17,19 @@
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         <field name="category_id" ref="module_cclog"/>
     </record>
+
+    <record model="ir.rule" id="partner_view_rule_support_agents">
+        <field name="name">Support Agent Vew Rule</field>
+        <field name="model_id" ref="model_cclog_request"/>
+        <field name="groups" eval="[(4, ref('cclog.support_agents'))]" />
+        <field name="domain_force">[('|'),('user_id', '=', user.id),('agent','=',user.partner_id.id)]</field>    
+    </record>
+    <record id="partner_view_rule_cclog_support" model="ir.rule">
+        <field name="model_id" ref="model_cclog_request" />
+        <field name="name">CCLOG Support</field>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4,ref('cclog.cclog_admin'))]"/>
+    </record>
+  
 
 </odoo>
