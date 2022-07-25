@@ -7,7 +7,6 @@
              <field name="arch" type="xml">
                 <tree string="All Branches">
                    <field name="status"/>
-                    <field name="branch_code" />
                     <field name="branch_name" />
                 </tree>
             </field>
@@ -24,9 +23,6 @@
                             <field name="status"/>
                         </group>
                         <group>
-                            <field name="branch_code"/>
-                        </group>
-                        <group>
                             <field name="branch_name"/>
                         </group>
                     </sheet>
@@ -41,7 +37,6 @@
             <field name="model">cclog.branch</field>
             <field name="arch" type="xml">
                 <search>
-                      <field name="branch_code" />
                       <field name="branch_name" />
                       
                 </search>
@@ -61,6 +56,6 @@
         <!-- top level menu: no parent -->
         <menuitem id="main_service_menu" name="CCLOG"/>
         <menuitem id="config_menu_cclog" name="Configurations" sequence="11"  parent="main_service_menu" />
-        <menuitem id="config_branches" name="Branches" parent="config_menu_cclog" sequence="5"  action="branch_lists_action" />
+        <menuitem id="config_branches" name="Teams" parent="config_menu_cclog" sequence="5"  action="branch_lists_action" />
      
 </odoo>

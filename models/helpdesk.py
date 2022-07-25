@@ -29,6 +29,7 @@ class ticketrequest(models.Model):
     user_id = fields.Many2one('res.users', string='User', track_visibility='onchange', readonly=True, default=lambda self: self.env.user.id)
     base_url = fields.Char('Base Url', compute='_get_url_id', store='True')
     current_agent = fields.Boolean('is current user ?', compute='_get_agent')
+    unique_field = fields.Char(string="Ref",compute='comp_name', store=True)
 
 
     
@@ -60,6 +61,13 @@ class ticketrequest(models.Model):
             template_id = self.env.ref('cclog.email_template_ongoing_request').id
             template =  self.env['mail.template'].browse(template_id)
             template.send_mail(req.id,force_send=True)
+
+
+    @api.depends('start_date')
+    def comp_name(self):
+        for e in self:
+            self.unique_field =f'R-000{str(e.id)}' 
+
 
         
 

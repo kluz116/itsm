@@ -5,6 +5,8 @@
             <field name="model">cclog.request</field>
              <field name="arch" type="xml">
                 <tree string="All Requests" default_order='start_date desc'>
+                    
+                    <field name="unique_field" />
                     <field name="title" />
                     <field name="state" />
                     <field name="start_date" />

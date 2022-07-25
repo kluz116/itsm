@@ -18,6 +18,8 @@
 
                                 You have been assigned a customer request for ${object.client_id.combination} on CCLOG by ${object.created_by.name} on ${object.start_date}
                                 <br/>
+                                Ref : ${object.unique_field}
+                                <br/>
                                 Issue : ${object.title}
                                 <br/>
                                 Description : ${object.description}
@@ -52,7 +54,10 @@
 
                     Customer request for ${object.client_id.combination} on CCLOG by ${object.created_by.name} on ${object.start_date} has been resolved by ${object.agent.name}
                     <br/>
+                    Ref : ${object.unique_field}
+                    <br/>
                     Issue : ${object.title}
+                    
                     <br/>
                     Description : ${object.description}
                     <br/>
@@ -87,6 +92,8 @@
                     <br /><br />
 
                     Customer request for ${object.client_id.combination} on CCLOG by ${object.created_by.name} on ${object.start_date} has been closed off
+                    <br/>
+                    Ref : ${object.unique_field}
                     <br/>
                     Issue : ${object.title}
                     <br/>
@@ -125,6 +132,8 @@
 
                     Customer request for ${object.client_id.combination} on CCLOG by ${object.created_by.name} on ${object.start_date} has been marked pending by  ${object.agent.name}
                     <br/>
+                    Ref : ${object.unique_field}
+                    <br/>
                     Issue : ${object.title}
                     <br/>
                     Description : ${object.description}
@@ -161,6 +170,8 @@
                     <br /><br />
 
                     Customer request for ${object.client_id.combination} on CCLOG by ${object.created_by.name} on ${object.start_date} has been re-opened
+                    <br/>
+                    Ref : ${object.unique_field}
                     <br/>
                     Issue : ${object.title}
                     <br/>
@@ -199,6 +210,8 @@
                                 <br /><br />
 
                                 There is still an ongoing customer request for ${object.client_id.combination} on CCLOG by ${object.created_by.name} on ${object.start_date}. Take time and look at the request and resolve it to stop this escalation 
+                                <br/>
+                                Ref : ${object.unique_field}
                                 <br/>
                                 Issue : ${object.title}
                                 <br/>
