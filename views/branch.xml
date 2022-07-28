@@ -5,9 +5,10 @@
             <field name="name">cclog.branch.tree</field>
             <field name="model">cclog.branch</field>
              <field name="arch" type="xml">
-                <tree string="All Branches">
+                <tree string="All Teams">
                    <field name="status"/>
-                    <field name="branch_name" />
+                    <field name="team_name"/>
+                    <field name="team_email"/>
                 </tree>
             </field>
         </record>
@@ -17,13 +18,16 @@
             <field name="name">cclog.branch.form</field>
             <field name="model">cclog.branch</field>
             <field name="arch" type="xml">
-                <form string="Add Branch" create="false" edit="false">
+                <form string="Add Teams" create="false" edit="false">
                     <sheet>
                         <group>
                             <field name="status"/>
                         </group>
                         <group>
-                            <field name="branch_name"/>
+                            <field name="team_name"/>
+                        </group>
+                         <group>
+                            <field name="team_email"/>
                         </group>
                     </sheet>
                 </form>
@@ -37,7 +41,7 @@
             <field name="model">cclog.branch</field>
             <field name="arch" type="xml">
                 <search>
-                      <field name="branch_name" />
+                      <field name="team_name" />
                       
                 </search>
             </field>
@@ -45,11 +49,11 @@
         
        
         <record model="ir.actions.act_window" id="branch_lists_action">
-            <field name="name">Branches</field>
+            <field name="name">Teams</field>
             <field name="res_model">cclog.branch</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">Create new Branch</p>
+                <p class="o_view_nocontent_smiling_face">Create new Team</p>
             </field>
         </record>
 

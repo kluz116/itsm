@@ -47,10 +47,8 @@
             <field name="model">cclog.client</field>
             <field name="arch" type="xml">
                 <search>
-                    <field name="client_id"/>
                     <field name="account_id"/>
-                    <field name="name"/>
-                    <field name="phone"/>
+                    <field name="client_id"/>   
                 </search>
             </field>
         </record>
