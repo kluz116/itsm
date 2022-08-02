@@ -96,9 +96,9 @@
         </record>
 
         <menuitem id="main_service_menu" name="CCLOG"/>
-        <menuitem id="service_menu" name="Disposition Managment" parent="main_service_menu"/>
-        <menuitem id="Services" name="Dispositions" parent="service_menu" action="service_list_action"/>
-        <menuitem id="Sub_Services" name="Dispositions Subcategories" parent="service_menu" action="service_subcategory_list_action"/>
+        <menuitem id="service_menu" name="Disposition Managment" parent="main_service_menu" groups="cclog.cclog_admin" />
+        <menuitem id="Services" name="Dispositions" parent="service_menu" action="service_list_action" groups="cclog.cclog_admin" />
+        <menuitem id="Sub_Services" name="Dispositions Subcategories" parent="service_menu" action="service_subcategory_list_action" groups="cclog.cclog_admin" />
         
      
 

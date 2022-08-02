@@ -67,8 +67,8 @@
     
 
         <menuitem id="main_service_menu" name="CCLOG"/>
-        <menuitem id="service_menu_client" name="Client Managment" parent="main_service_menu" />
-        <menuitem id="Clients" name="Clients" parent="service_menu_client" action="client_list_action"/>
+        <menuitem id="service_menu_client" name="Client Managment" parent="main_service_menu" groups="cclog.cclog_admin" />
+        <menuitem id="Clients" name="Clients" parent="service_menu_client" action="client_list_action" groups="cclog.cclog_admin" />
         
         
 </odoo>

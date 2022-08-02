@@ -59,7 +59,7 @@
 
         <!-- top level menu: no parent -->
         <menuitem id="main_service_menu" name="CCLOG"/>
-        <menuitem id="config_menu_cclog" name="Configurations" sequence="11"  parent="main_service_menu" />
-        <menuitem id="config_branches" name="Teams" parent="config_menu_cclog" sequence="5"  action="branch_lists_action" />
+        <menuitem id="config_menu_cclog" name="Configurations" sequence="11"  parent="main_service_menu" groups="cclog.cclog_admin" />
+        <menuitem id="config_branches" name="Teams" parent="config_menu_cclog" sequence="5"  action="branch_lists_action" groups="cclog.cclog_admin"  />
      
 </odoo>

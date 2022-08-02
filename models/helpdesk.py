@@ -9,9 +9,11 @@ class ticketrequest(models.Model):
 
     title = fields.Char(string='Title', required=True)
     description  = fields.Text(string="Description", required=True)
-    branch_id = fields.Many2one('cclog.branch',string ='Team', required=True)
+    branch_id = fields.Many2one('cclog.branch',string ='Team')
     agent = fields.Many2one('res.partner','Agent',domain="[('branch_id_cclog', '=', branch_id)]")
-    state =  fields.Selection([('N','New'),('A','Assigned'),('RA','Re Assign'),('P','Pending'),('R','Resolved'),('RO','Re Open'),('C','Closed')],string="Status", required=True, default="A")
+    state =  fields.Selection([('N','New'),('A','Assigned'),('RA','Re Assign'),('P','Pending'),('R','Resolved'),('RO','Re Open'),('C','Closed'),('E','Escalated')],string="Status", required=True, default="N")
+    client_state =  fields.Selection([('yes','Yes'),('no','No')],string="Is Existing Client", required=True, default="yes")
+    prospect_client = fields.Char(string='Propect Client')
     start_date = fields.Date(string='Start Date', default=lambda self: fields.Date.today())
     end_date = fields.Datetime(string='Start Date')
     close_date = fields.Datetime(string='Close Date')
