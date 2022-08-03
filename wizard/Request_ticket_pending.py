@@ -1,5 +1,6 @@
 from odoo import api, fields, models
-from datetime import datetime
+from datetime import datetime,timedelta
+from pytz import timezone 
 
 class RequestsPendingTicket(models.TransientModel):
     _name = "cclog.pending_tickets_wizard"
@@ -12,6 +13,13 @@ class RequestsPendingTicket(models.TransientModel):
     
     pending_comment = fields.Text(string="Pending Comment", required=True)
     pending_date = fields.Datetime(string='Pending Date Date', default=datetime.today())
+    pending_escalation =  fields.Char(string='Excalation', compute='comp_time_hod')
+
+    @api.depends('pending_date')
+    def comp_time_hod(self):
+        east_africa = timezone('Africa/Nairobi')
+        date_time = datetime.now(east_africa)+ + timedelta(hours=24)
+        self.pending_escalation = format(date_time, '%Y-%m-%d %H:%M') 
 
     @api.multi
     def action_pending_agent(self):

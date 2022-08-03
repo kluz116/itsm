@@ -1,5 +1,6 @@
 from odoo import models, fields, api
-from datetime import datetime
+from datetime import datetime, timedelta
+from pytz import timezone 
 
 
 class ticketrequest(models.Model):
@@ -32,6 +33,7 @@ class ticketrequest(models.Model):
     base_url = fields.Char('Base Url', compute='_get_url_id', store='True')
     current_agent = fields.Boolean('is current user ?', compute='_get_agent')
     unique_field = fields.Char(string="Ref",compute='comp_name', store=True)
+    pending_escalation =  fields.Char(string='Excalation')
 
 
     
@@ -69,6 +71,7 @@ class ticketrequest(models.Model):
     def comp_name(self):
         for e in self:
             self.unique_field =f'R-000{str(e.id)}' 
+
 
 
         
