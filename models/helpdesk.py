@@ -1,6 +1,6 @@
 from odoo import models, fields, api
 from datetime import datetime, timedelta
-from pytz import timezone 
+
 
 
 class ticketrequest(models.Model):
@@ -25,7 +25,8 @@ class ticketrequest(models.Model):
     resolution_comment = fields.Text(string="Comment")
     resolution_date = fields.Datetime(string='Resolution Date', default=datetime.today())
     pending_comment = fields.Text(string="Pending Comment")
-    pending_date = fields.Datetime(string='Pending Date Date', default=datetime.today())
+    pending_date = fields.Datetime(string='Pending Date')
+    pending_hour = fields.Char(string='Escalation Date')
     rating = fields.Selection([('very_satified', 'Very Satified'), ('satified', 'Satified'), ('disatified', 'Disatified')])
     closing_date = fields.Datetime(string='Close Date', default=datetime.today())
     created_by = fields.Many2one('res.users','Created By:',default=lambda self: self.env.user)
@@ -33,7 +34,7 @@ class ticketrequest(models.Model):
     base_url = fields.Char('Base Url', compute='_get_url_id', store='True')
     current_agent = fields.Boolean('is current user ?', compute='_get_agent')
     unique_field = fields.Char(string="Ref",compute='comp_name', store=True)
-    pending_escalation =  fields.Char(string='Excalation')
+    pending_escalation =  fields.Date(string='Excalation')
 
 
     
