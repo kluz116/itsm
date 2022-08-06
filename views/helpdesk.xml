@@ -4,7 +4,7 @@
             <field name="name">cclog.request.tree</field>
             <field name="model">cclog.request</field>
              <field name="arch" type="xml">
-                <tree string="All Requests" default_order='start_date desc'>
+                <tree string="All Requests" decoration-danger="state=='E'"  default_order='start_date desc'>
                     
                     <field name="unique_field" />
                     <field name="title" />
@@ -27,14 +27,15 @@
             <field name="arch" type="xml">
                 <form string="Create Request" create="false" edit="false">
                     <header>
-                    <button name="%(cclog.wizard_assign_form_view_reassign)d" states='N' string="Assign Ticket"  class="btn btn-success" type="action" />
-                    <button name="%(cclog.wizard_assign_form_view_reassign)d" states='A' string="Re Assign Ticket" attrs="{'invisible':['|',('current_agent', '=', False)]}"  class="btn btn-success" type="action" />
+                    <button name="%(cclog.wizard_assign_form_view_reassign)d" states='N' string="Assign Ticket"  class="btn btn-success" type="action" groups="cclog.cclog_agents,cclog.cclog_admin" />
+                    <button name="%(cclog.wizard_assign_form_view_reassign)d" states='A' string="Re Assign Ticket"  class="btn btn-success" type="action" groups="cclog.cclog_admin,cclog.cclog_agents,cclog.support_agents"/>
                     <button name="%(cclog.wizard_requests_pending_form_view)d" states='A' string="Mark Pending" attrs="{'invisible':['|',('current_agent', '=', False)]}"  type="action" class="btn btn-warning"  />
+                    <button name="%(cclog.wizard_inquire_form_view)d" states='A' string="Inquire on ticket" attrs="{'invisible':['|',('current_agent', '=', False)]}"  type="action" class="btn btn-dark"  />
                     <button name="%(cclog.wizard_requests_resolve)d" states='A,P,RA,RO' string="Resolve Ticket" attrs="{'invisible':['|',('current_agent', '=', False)]}"  class="btn btn-primary" type="action" />
                     <button name="action_reopen" states='R' string="Re Open Ticket" class="btn btn-primary" type="object" groups="cclog.cclog_admin"  />
                     <button name="%(cclog.wizard_requests_close_form_view)d" states='R' string="Close Ticket" class="btn btn-danger" type="action"  groups="cclog.cclog_admin"  />
                     <field name ="current_agent" invisible ='1'/>
-                    <field name="state" widget="statusbar" statusbar_visible="N,A,RA,P,R,RO,C,E" />
+                    <field name="state" widget="statusbar" statusbar_visible="N,A,RA,P,E,R,RO,C" />
                     </header>
                     <sheet>
                         <group>
@@ -52,13 +53,7 @@
                             <field name = "prospect_client" attrs="{'invisible':['|',('client_state', '=', 'yes')]}"/>
                             <field name="client_id" attrs="{'invisible':['|',('client_state', '=', 'no')]}" options="{'no_quick_create':True,'no_quick_edit':True,'no_open':True,'no_create': True, 'no_create_edit':True}"/>
                         </group>
-                        <!--
-                        <group>
-                            <field name="branch_id" options="{'no_quick_create':True,'no_quick_edit':True,'no_open':True,'no_create': True, 'no_create_edit':True}" />
-                        </group>
-                        <group>
-                            <field name="agent" options="{'no_quick_create':True,'no_quick_edit':True,'no_open':True,'no_create': True, 'no_create_edit':True}"/>
-                        </group>-->
+
                         <group>
                             <field name="title"/>
                         </group>
@@ -71,6 +66,43 @@
                         <group>
                             <field name="start_date"  invisible="1"/>
                         </group>
+                        <notebook>
+                            <page string="Inquire on ticket">
+                                <group>
+                                    <field name="Inquire_comment"  readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="Inquire_date"  readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="Inquired_by"  readonly="1"/>
+                                </group>
+                            </page>
+                            <page string="Resolution Information">
+                                <group>
+                                    <field name="resolution_comment"  readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="resolution_date"  readonly="1"/>
+                                </group>
+                            </page>
+                            <page string="Pending Information">
+                                <group>
+                                    <field name="pending_comment"  readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="pending_date"  readonly="1"/>
+                                </group>
+                            </page>
+                            <page string="Closure Information">
+                                <group>
+                                    <field name="rating"  readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="closing_date"  readonly="1"/>
+                                </group>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>

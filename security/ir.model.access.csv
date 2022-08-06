@@ -13,4 +13,4 @@ access_cclog_ccl,cclog.cclog,model_cclog_branch,support_agents,1,1,1,0
 access_cclog_c,cclog.cclog,model_cclog_branch,cclog_admin,1,1,1,0
 access_cclog_c_cclog_agents,cclog.cclog,model_cclog_branch,cclog_agents,1,1,0,0
 access_ccldog_c,cclog.cclog,model_cclog_request,cclog_admin,1,1,1,0
-access_ccldog_c,cclog.cclog,model_cclog_request,cclog_admin,1,1,1,0
+access_ccldog_vc,cclog.cclog,model_cclog_request,cclog_agents,1,1,1,0

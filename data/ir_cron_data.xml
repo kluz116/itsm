@@ -12,6 +12,17 @@
         <field name="doall" eval="True"/>
     </record>
 
+    <record id="pending_tickets_cron" model="ir.cron">
+        <field name="name">Escalation of pending requests</field>
+        <field name="model_id" ref="model_cclog_request"/>
+        <field name="state">code</field>
+        <field name="code">model._update_expiration_pending()</field>
+        <field name="interval_number">10</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="True"/>
+    </record>
+
 
 
 </odoo>

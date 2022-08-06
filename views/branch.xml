@@ -18,7 +18,7 @@
             <field name="name">cclog.branch.form</field>
             <field name="model">cclog.branch</field>
             <field name="arch" type="xml">
-                <form string="Add Teams" create="false" edit="false">
+                <form string="Add Teams" create="false" edit="true">
                     <sheet>
                         <group>
                             <field name="status"/>
@@ -59,7 +59,7 @@
 
         <!-- top level menu: no parent -->
         <menuitem id="main_service_menu" name="CCLOG"/>
-        <menuitem id="config_menu_cclog" name="Configurations" sequence="11"  parent="main_service_menu" groups="cclog.cclog_admin" />
+        <menuitem id="config_menu_cclog" name="Configurations" sequence="11"  parent="main_service_menu" groups="cclog.cclog_agents,cclog.cclog_admin"  />
         <menuitem id="config_branches" name="Teams" parent="config_menu_cclog" sequence="5"  action="branch_lists_action" groups="cclog.cclog_admin"  />
      
 </odoo>

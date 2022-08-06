@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="inquire_wizard_view_form_wizard" model="ir.ui.view">
+            <field name="name">cclog.inquire_wizard.form</field>
+            <field name="model">cclog.inquire_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Pending Ticket">
+                    <sheet>
+                        <group>
+                            <field name="Inquire_comment"/>
+                        </group>
+                        <group>
+                            <field name="Inquire_date"  invisible="1"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_inquire_agent" string="Inquire" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="wizard_inquire_form_view" model="ir.actions.act_window">
+            <field name="name">Inquire Ticket</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cclog.inquire_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="inquire_wizard_view_form_wizard"/>
+            <field name="target">new</field>
+        </record>
+</odoo>

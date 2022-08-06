@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 from datetime import datetime, timedelta
+from pytz import timezone 
 
 
 
@@ -23,18 +24,22 @@ class ticketrequest(models.Model):
     service_id = fields.Many2one('cclog.services',ondelete='cascade',string='Disposition')
     service_subcategory_id = fields.Many2one('cclog.subcategory',string="Disposition Sub Category",domain = " [('service_id','=',service_id)] " )
     resolution_comment = fields.Text(string="Comment")
-    resolution_date = fields.Datetime(string='Resolution Date', default=datetime.today())
+    resolution_date = fields.Datetime(string='Resolution Date')
     pending_comment = fields.Text(string="Pending Comment")
     pending_date = fields.Datetime(string='Pending Date')
     pending_hour = fields.Char(string='Escalation Date')
     rating = fields.Selection([('very_satified', 'Very Satified'), ('satified', 'Satified'), ('disatified', 'Disatified')])
-    closing_date = fields.Datetime(string='Close Date', default=datetime.today())
+    closing_date = fields.Datetime(string='Close Date')
     created_by = fields.Many2one('res.users','Created By:',default=lambda self: self.env.user)
     user_id = fields.Many2one('res.users', string='User', track_visibility='onchange', readonly=True, default=lambda self: self.env.user.id)
     base_url = fields.Char('Base Url', compute='_get_url_id', store='True')
     current_agent = fields.Boolean('is current user ?', compute='_get_agent')
     unique_field = fields.Char(string="Ref",compute='comp_name', store=True)
-    pending_escalation =  fields.Date(string='Excalation')
+    pending_escalation =  fields.Date(string='Escalation')
+        
+    Inquire_comment = fields.Text(string="Inquire Comment")
+    Inquire_date = fields.Datetime(string='Inquire Date ')
+    Inquired_by = fields.Many2one('res.users','Inquired By:')
 
 
     
@@ -72,6 +77,13 @@ class ticketrequest(models.Model):
     def comp_name(self):
         for e in self:
             self.unique_field =f'R-000{str(e.id)}' 
+
+    @api.model
+    def _update_expiration_pending(self):
+        east_africa = timezone('Africa/Nairobi')
+        now_date = datetime.now(east_africa).strftime('%Y-%m-%d')
+        now_time = datetime.now(east_africa).strftime('%H:%M')
+        self.search([('&'),('pending_escalation', '=', now_date),('pending_hour','>=',now_time),('state','=','P')]).write({'state': "E"})
 
 
 

@@ -19,13 +19,13 @@ class RequestsPendingTicket(models.TransientModel):
     @api.depends('pending_date')
     def comp_time_hod(self):
         east_africa = timezone('Africa/Nairobi')
-        date_time = datetime.now(east_africa)+ + timedelta(hours=24)
+        date_time = datetime.now(east_africa)+ + timedelta(hours=1)
         self.pending_escalation = format(date_time, '%Y-%m-%d') 
 
     @api.depends('pending_date')
     def comp_time_hod_hour(self):
         east_africa = timezone('Africa/Nairobi')
-        date_time = datetime.now(east_africa)+ + timedelta(hours=24)
+        date_time = datetime.now(east_africa)+ + timedelta(hours=1)
         self.pending_hour = format(date_time, '%H:%M') 
 
     @api.multi
