@@ -91,7 +91,8 @@
                                     <field name="pending_comment"  readonly="1"/>
                                 </group>
                                 <group>
-                                    <field name="pending_date"  readonly="1"/>
+                                    <field name="pending_escalation"  readonly="1"/>
+                                    <field name="pending_hour"  readonly="1"/>
                                 </group>
                             </page>
                             <page string="Closure Information">

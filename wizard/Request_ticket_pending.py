@@ -36,6 +36,7 @@ class RequestsPendingTicket(models.TransientModel):
             req.pending_comment = self.pending_comment
             req.pending_date = self.pending_date
             req.pending_hour = self.pending_hour
+            req.pending_escalation = self.pending_escalation
             req.state = self.state
 
             template_id = self.env.ref('cclog.email_template_pending_request').id
