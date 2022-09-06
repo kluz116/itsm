@@ -34,12 +34,18 @@ class ticketrequest(models.Model):
     user_id = fields.Many2one('res.users', string='User', track_visibility='onchange', readonly=True, default=lambda self: self.env.user.id)
     base_url = fields.Char('Base Url', compute='_get_url_id', store='True')
     current_agent = fields.Boolean('is current user ?', compute='_get_agent')
+    current_user = fields.Boolean('is current user ?', compute='_get_user')
     unique_field = fields.Char(string="Ref",compute='comp_name', store=True)
     pending_escalation =  fields.Date(string='Escalation')
         
     Inquire_comment = fields.Text(string="Inquire Comment")
     Inquire_date = fields.Datetime(string='Inquire Date ')
     Inquired_by = fields.Many2one('res.users','Inquired By:')
+    Inquire_comment_response = fields.Text(string="Response Comment")
+    Inquire_date_response = fields.Datetime(string='Response Date ')
+    Inquired_by_response = fields.Many2one('res.users','Created By:')
+    partner_id = fields.Many2one ('res.partner', 'Customer', default = lambda self: self.env.user.partner_id )
+  
 
 
     
@@ -55,6 +61,13 @@ class ticketrequest(models.Model):
         for e in self:
             partner = self.env['res.users'].browse(self.env.uid).partner_id
             e.current_agent = (True if partner.id == self.agent.id else False)
+
+    
+    @api.depends('created_by')
+    def _get_user(self):
+        for e in self:
+            partner = self.env['res.users'].browse(self.env.uid).partner_id
+            e.current_user = (True if partner.id == self.created_by.partner_id else False)
  
 
     def action_reopen(self):

@@ -31,10 +31,12 @@
                     <button name="%(cclog.wizard_assign_form_view_reassign)d" states='A' string="Re Assign Ticket"  class="btn btn-success" type="action" groups="cclog.cclog_admin,cclog.cclog_agents,cclog.support_agents"/>
                     <button name="%(cclog.wizard_requests_pending_form_view)d" states='A' string="Mark Pending" attrs="{'invisible':['|',('current_agent', '=', False)]}"  type="action" class="btn btn-warning"  />
                     <button name="%(cclog.wizard_inquire_form_view)d" states='A' string="Inquire on ticket" attrs="{'invisible':['|',('current_agent', '=', False)]}"  type="action" class="btn btn-dark"  />
-                    <button name="%(cclog.wizard_requests_resolve)d" states='A,P,RA,RO' string="Resolve Ticket" attrs="{'invisible':['|',('current_agent', '=', False)]}"  class="btn btn-primary" type="action" />
+                    <button name="%(cclog.wizard_inquire_form_view_res)d" states='A' string="Respond To Inquiry" attrs=""  type="action" class="btn btn-dark"  />
+                    <button name="%(cclog.wizard_requests_resolve)d" states='A,P,RA,RO,E' string="Resolve Ticket" attrs="{'invisible':['|',('current_agent', '=', False)]}"  class="btn btn-primary" type="action" />
                     <button name="action_reopen" states='R' string="Re Open Ticket" class="btn btn-primary" type="object" groups="cclog.cclog_admin"  />
                     <button name="%(cclog.wizard_requests_close_form_view)d" states='R' string="Close Ticket" class="btn btn-danger" type="action"  groups="cclog.cclog_admin"  />
                     <field name ="current_agent" invisible ='1'/>
+                    <field name ="current_user" invisible ='1'/>
                     <field name="state" widget="statusbar" statusbar_visible="N,A,RA,P,E,R,RO,C" />
                     </header>
                     <sheet>
@@ -70,12 +72,15 @@
                             <page string="Inquire on ticket">
                                 <group>
                                     <field name="Inquire_comment"  readonly="1"/>
+                                    <field name="Inquire_comment_response"  readonly="1"/>
                                 </group>
                                 <group>
                                     <field name="Inquire_date"  readonly="1"/>
+                                    <field name="Inquire_date_response"  readonly="1"/>
                                 </group>
                                 <group>
                                     <field name="Inquired_by"  readonly="1"/>
+                                    <field name="Inquired_by_response"  readonly="1"/>
                                 </group>
                             </page>
                             <page string="Resolution Information">

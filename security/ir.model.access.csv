@@ -8,9 +8,9 @@ access_cclog_cclog5_cclog_agents,cclog.cclog,model_cclog_subcategory,cclog_agent
 access_cclog_cclog35,cclog.cclog,model_cclog_client,support_agents,1,1,0,0
 access_cclog_cclog35_cclog_agents,cclog.cclog,model_cclog_client,cclog_agents,1,1,0,0
 
-access_cclog_cclogx,cclog.cclog,model_cclog_services,cclog_admin,1,1,1,0
-access_cclog_ccl,cclog.cclog,model_cclog_branch,support_agents,1,1,1,0
-access_cclog_c,cclog.cclog,model_cclog_branch,cclog_admin,1,1,1,0
-access_cclog_c_cclog_agents,cclog.cclog,model_cclog_branch,cclog_agents,1,1,0,0
-access_ccldog_c,cclog.cclog,model_cclog_request,cclog_admin,1,1,1,0
+access_cclog_cclogx,cclog.cclog,model_cclog_services,cclog_admin,1,1,1,1
+access_cclog_ccl,cclog.cclog,model_cclog_branch,support_agents,1,1,1,1
+access_cclog_c,cclog.cclog,model_cclog_branch,cclog_admin,1,1,1,1
+access_cclog_c_cclog_agents,cclog.cclog,model_cclog_branch,cclog_agents,1,1,0,1
+access_ccldog_c,cclog.cclog,model_cclog_request,cclog_admin,1,1,1,1
 access_ccldog_vc,cclog.cclog,model_cclog_request,cclog_agents,1,1,1,0

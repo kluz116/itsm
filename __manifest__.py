@@ -35,6 +35,7 @@
         'wizard/incidents_ticket_close.xml',
         'wizard/Incident_ticket_assign_view.xml',
         'wizard/inquire_request.xml',
+        'wizard/inquire_request_response.xml',
         'views/services.xml',
         'views/helpdesk.xml',
         'views/client.xml',

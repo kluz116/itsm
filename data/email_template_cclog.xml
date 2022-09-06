@@ -271,6 +271,42 @@
                     </div>
             </field>
         </record>
+        <record id="email_template_inquire_request_response" model="mail.template">
+            <field name="name">CCLOG: Inquire Request</field>
+            <field name="model_id" ref="model_cclog_request"/>
+            <field name="email_from">cclog@financetrust.co.ug</field>
+            <field name="email_to">${object.created_by.email},${object.agent.email}</field>
+            <field name="email_cc">Allan.musembya@financetrust.co.ug,${object.branch_id.team_email}</field>
+            <field name="subject">${object.title}</field>
+            <field name="body_html" type="html">
+                    <div style="margin: 0px; padding: 0px;">
+                    
+                            <p style="margin: 0px; padding: 0px; font-size: 18px;">
+                                Hello ${object.created_by.name},
+                                <br /><br />
+
+                                Request has been commented on by ${object.created_by.name}
+                                <br/>
+                                Ref : ${object.unique_field}
+                                <br/>
+                                Issue : ${object.title}
+                                <br/>
+                                Comment : ${object.Inquire_comment_response}
+                                <br/>
+                                <br/>
+                                
+                                <div class="col text-center">
+                                    <a class="btn btn-success btn-sm" role="button" href="${object.base_url}"> please click on this link to access ticket.</a>
+                                </div>
+                                
+                                <br/><br/>
+                                Regards,<br/>
+                                cclog
+                            
+                            </p>
+                    </div>
+            </field>
+        </record>
 
 
     </data>
