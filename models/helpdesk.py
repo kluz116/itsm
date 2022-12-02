@@ -16,7 +16,7 @@ class ticketrequest(models.Model):
     state =  fields.Selection([('N','New'),('A','Assigned'),('RA','Re Assign'),('P','Pending'),('R','Resolved'),('RO','Re Open'),('C','Closed'),('E','Escalated')],string="Status", required=True, default="N")
     client_state =  fields.Selection([('yes','Yes'),('no','No')],string="Is Existing Client", required=True, default="yes")
     prospect_client = fields.Char(string='Propect Client')
-    start_date = fields.Date(string='Start Date', default=lambda self: fields.Date.today())
+    start_date = fields.Datetime(string='Start Date', default=lambda self: fields.datetime.now())
     end_date = fields.Datetime(string='Start Date')
     close_date = fields.Datetime(string='Close Date')
     trx_proof = fields.Binary(string='Upload File', attachment=True)
@@ -35,7 +35,7 @@ class ticketrequest(models.Model):
     base_url = fields.Char('Base Url', compute='_get_url_id', store='True')
     current_agent = fields.Boolean('is current user ?', compute='_get_agent')
     current_user = fields.Boolean('is current user ?', compute='_get_user')
-    unique_field = fields.Char(string="Ref",compute='comp_name', store=True)
+    #unique_field = fields.Char(string="Ref",compute='comp_name', store=True)
     pending_escalation =  fields.Date(string='Escalation')
         
     Inquire_comment = fields.Text(string="Inquire Comment")
@@ -86,10 +86,10 @@ class ticketrequest(models.Model):
             template.send_mail(req.id,force_send=True)
 
 
-    @api.depends('start_date')
-    def comp_name(self):
-        for e in self:
-            self.unique_field =f'R-000{str(e.id)}' 
+   # @api.depends('start_date')
+    #def comp_name(self):
+        #for e in self:
+        #self.unique_field =f'R-000{str(self.id)}' 
 
     @api.model
     def _update_expiration_pending(self):

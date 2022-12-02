@@ -1,13 +1,52 @@
 <?xml version="1.0" ?>
 <odoo>
+
+
     <data noupdate="1">
         <!--Email template -->
+
+        <record id="email_template_create_request_created" model="mail.template">
+            <field name="name">CCLOG: New Request Created</field>
+            <field name="model_id" ref="model_cclog_request"/>
+            <field name="email_from">${object.partner_id.email}</field>
+            <field name="email_to">Annet.Namaliri@financetrust.co.ug,Crispus.Mutome@financetrust.co.ug,Charles.Odaga@financetrust.co.ug</field>
+            <field name="email_cc">Allan.musembya@financetrust.co.ug,${object.branch_id.team_email}</field>
+            <field name="subject">A new request on cclog has been created.</field>
+            <field name="body_html" type="html">
+                    <div style="margin: 0px; padding: 0px;">
+                    
+                            <p style="margin: 0px; padding: 0px; font-size: 18px;">
+                                Hello Team,
+                                <br /><br />
+
+                                New request for  ${object.client_id.combination} on CCLOG by ${object.created_by.name}
+                                <br/>
+                                Ref : ${object.unique_field}
+                                <br/>
+                                Issue : ${object.title}
+                                <br/>
+                                Description : ${object.description}
+                                <br/>
+                                <br/>
+                                
+                                <div class="col text-center">
+                                    <a class="btn btn-success btn-sm" role="button" href="${object.base_url}"> Please click on this link to access ticket.</a>
+                                </div>
+                                
+                                <br/><br/>
+                                Regards,<br/>
+                                cclog
+                            
+                            </p>
+                    </div>
+            </field>
+        </record>
         <record id="email_template_create_request" model="mail.template">
             <field name="name">CCLOG: New Request</field>
             <field name="model_id" ref="model_cclog_request"/>
-            <field name="email_from">cclog@financetrust.co.ug</field>
-            <field name="email_to">${object.agent.email}</field>
-            <field name="email_cc">Allan.musembya@financetrust.co.ug,${object.branch_id.team_email}</field>
+            <field name="email_from">${object.partner_id.email}</field>
+            <field name="email_to">${object.agent.email},${object.created_by.email}</field>
+            <field name="email_cc">Allan.musembya@financetrust.co.ug</field>
             <field name="subject">${object.title}</field>
             <field name="body_html" type="html">
                     <div style="margin: 0px; padding: 0px;">
@@ -42,8 +81,8 @@
         <record id="email_template_resolved_request" model="mail.template">
             <field name="name">CCLOG: Request Resolved</field>
             <field name="model_id" ref="model_cclog_request"/>
-            <field name="email_from">cclog@financetrust.co.ug</field>
-            <field name="email_to">Allan.musembya@financetrust.co.ug,${object.agent.email}</field>
+            <field name="email_from">${object.agent.email}</field>
+            <field name="email_to">Allan.musembya@financetrust.co.ug,${object.partner_id.email}</field>
             <field name="email_cc">Allan.musembya@financetrust.co.ug,${object.branch_id.team_email}</field>
             <field name="subject">${object.title}</field>
             <field name="body_html" type="html">
@@ -81,8 +120,8 @@
         <record id="email_template_resolved_Closed" model="mail.template">
             <field name="name">CCLOG: Request Closed</field>
             <field name="model_id" ref="model_cclog_request"/>
-            <field name="email_from">cclog@financetrust.co.ug</field>
-            <field name="email_to">${object.branch_id.team_email},${object.agent.email}</field>
+            <field name="email_from">${object.agent.email}</field>
+            <field name="email_to">${object.branch_id.team_email},${object.agent.email},${object.partner_id.email}</field>
             <field name="email_cc">Allan.musembya@financetrust.co.ug</field>
             <field name="subject">${object.title}</field>
             <field name="body_html" type="html">
@@ -120,8 +159,8 @@
          <record id="email_template_pending_request" model="mail.template">
             <field name="name">CCLOG: Request Resolved</field>
             <field name="model_id" ref="model_cclog_request"/>
-            <field name="email_from">cclog@financetrust.co.ug</field>
-            <field name="email_to">Allan.musembya@financetrust.co.ug,${object.agent.email}</field>
+            <field name="email_from">${object.agent.email}</field>
+            <field name="email_to">Allan.musembya@financetrust.co.ug,${object.partner_id.email}</field>
             <field name="email_cc">Allan.musembya@financetrust.co.ug</field>
             <field name="subject">${object.title}</field>
             <field name="body_html" type="html">
@@ -159,7 +198,7 @@
         <record id="email_template_reopen_request" model="mail.template">
             <field name="name">CCLOG: Request Reopen</field>
             <field name="model_id" ref="model_cclog_request"/>
-            <field name="email_from">cclog@financetrust.co.ug</field>
+            <field name="email_from">${object.partner_id.email}</field>
             <field name="email_to">Allan.musembya@financetrust.co.ug,${object.agent.email}</field>
             <field name="email_cc">Allan.musembya@financetrust.co.ug</field>
             <field name="subject">${object.title}</field>
@@ -198,7 +237,7 @@
         <record id="email_template_ongoing_request" model="mail.template">
             <field name="name">CCLOG: Ongoing Request</field>
             <field name="model_id" ref="model_cclog_request"/>
-            <field name="email_from">cclog@financetrust.co.ug</field>
+            <field name="email_from">${object.partner_id.email}</field>
             <field name="email_to">${object.agent.email}</field>
             <field name="email_cc">Allan.musembya@financetrust.co.ug,${object.branch_id.team_email}</field>
             <field name="subject">${object.title}</field>
@@ -238,7 +277,7 @@
         <record id="email_template_inquire_request" model="mail.template">
             <field name="name">CCLOG: Inquire Request</field>
             <field name="model_id" ref="model_cclog_request"/>
-            <field name="email_from">cclog@financetrust.co.ug</field>
+            <field name="email_from">${object.Inquired_by.email}</field>
             <field name="email_to">${object.created_by.email},${object.agent.email}</field>
             <field name="email_cc">Allan.musembya@financetrust.co.ug,${object.branch_id.team_email}</field>
             <field name="subject">${object.title}</field>
@@ -274,8 +313,8 @@
         <record id="email_template_inquire_request_response" model="mail.template">
             <field name="name">CCLOG: Inquire Request</field>
             <field name="model_id" ref="model_cclog_request"/>
-            <field name="email_from">cclog@financetrust.co.ug</field>
-            <field name="email_to">${object.created_by.email},${object.agent.email}</field>
+            <field name="email_from">${object.created_by.email}</field>
+            <field name="email_to">${object.created_by.email},${object.agent.email},${object.partner_id.email}</field>
             <field name="email_cc">Allan.musembya@financetrust.co.ug,${object.branch_id.team_email}</field>
             <field name="subject">${object.title}</field>
             <field name="body_html" type="html">
